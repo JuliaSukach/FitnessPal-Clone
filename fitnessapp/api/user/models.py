@@ -25,6 +25,9 @@ class User(models.Model):
     status = fields.IntEnumField(UserStatus, default=UserStatus.SIMPLE)
     refresh = fields.TextField(validators=[], null=True)
 
+    def __str__(self):
+        return self
+
     class Meta:
         table = 'users'
         ordering = ('-created',)
