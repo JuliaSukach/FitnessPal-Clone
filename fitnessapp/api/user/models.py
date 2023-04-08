@@ -11,9 +11,6 @@ class UserStatus(IntEnum):
     STAFF = 4
     SIMPLE = 3
 
-    def __str__(self):
-        return self.name
-
 
 class User(models.Model):
     id = fields.BigIntField(pk=True)
@@ -26,7 +23,7 @@ class User(models.Model):
     refresh = fields.TextField(validators=[], null=True)
 
     def __str__(self):
-        return self
+        return self.username
 
     class Meta:
         table = 'users'
