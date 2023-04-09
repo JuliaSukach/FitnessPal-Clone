@@ -11,3 +11,5 @@ Jinja2~=3.1.2
 cryptography~=39.0.2
 tortoise~=0.1.1
 enum34~=1.1.6
+pathlib~=1.0.1
+python-dotenv~=1.0.0

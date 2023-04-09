@@ -4,7 +4,6 @@ from tortoise.exceptions import DoesNotExist
 
 from fitnessapp.api.user.models import User
 
-
 import base64
 from fitnessapp.utils.crypto import fernet
 
@@ -19,6 +18,7 @@ class AccountPage(web.View):
     @template('home.html')
     async def get(self):
         return {'key': 'Info'}
+
 
 class ActivateUserView(web.View):
     async def get(self):

@@ -4,6 +4,7 @@ from tortoise import models, fields
 from tortoise.signals import pre_save
 from enum import IntEnum
 from hashlib import sha3_224
+from fitnessapp.db import TextCryptoField
 
 
 class UserStatus(IntEnum):
@@ -15,8 +16,8 @@ class UserStatus(IntEnum):
 class User(models.Model):
     id = fields.BigIntField(pk=True)
     username = fields.CharField(max_length=120, unique=True)
-    password = fields.TextField(validators=[])
-    email = fields.CharField(max_length=256)
+    password = TextCryptoField(validators=[])
+    email = TextCryptoField(validators=[])
     is_active = fields.BooleanField(default=False)
     created = fields.DatetimeField(auto_now_add=True)
     status = fields.IntEnumField(UserStatus, default=UserStatus.SIMPLE)
