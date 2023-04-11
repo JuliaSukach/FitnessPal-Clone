@@ -27,3 +27,11 @@ async def check_info(request, handler):
         return web.json_response({'message': str(err)}, status=404)
     except IntegrityError as err:
         return web.json_response({'message': 'Already exists'}, status=400)
+
+
+@web.middleware
+async def auth_token(request, handler):
+    try:
+        return await handler(request)
+    except PermissionError as error:
+        return web.json_response({'message': str(error)}, status=403)
