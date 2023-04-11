@@ -12,6 +12,9 @@ class UserStatus(IntEnum):
     STAFF = 4
     SIMPLE = 3
 
+    def __str__(self):
+        return self.name
+
 
 class User(models.Model):
     id = fields.BigIntField(pk=True)

@@ -7,11 +7,11 @@ from tortoise.contrib.aiohttp import register_tortoise
 from controller import controller_setup
 from fitnessapp.utils.crypto import Enigma
 from fitnessapp import settings
-from .middles import check_data, check_info
+from .middles import check_data, check_info, auth_token
 
 
 def create_app():
-    app = web.Application(middlewares=(check_data, check_info))  # create application
+    app = web.Application(middlewares=(check_data, check_info, auth_token))  # create application
     jinja_setup(
         app,
         loader=jinja2.FileSystemLoader(
