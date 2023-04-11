@@ -155,3 +155,41 @@ class AuthView(web.View):
         # remove refresh_token
         ...
 
+@Simple()
+class PostView(web.View):
+    async def get(self):
+        print(await self.request.json())
+        return web.json_response({'PostView': 'get'}, status=200)
+
+    async def post(self):
+        print(await self.request.json())
+        return web.json_response({'PostView': 'post'}, status=201)
+
+    async def put(self):
+        print(await self.request.json())
+        return web.json_response({'PostView': 'put'}, status=201)
+
+    async def delete(self):
+        print(await self.request.json())
+        return web.json_response({'Info': 'delete'}, status=201)
+
+
+@Staff()
+class InfoView(web.View):
+    async def get(self):
+        print(await self.request.json())
+        return web.json_response({'Info': 'get'}, status=200)
+
+    async def post(self):
+        print(await self.request.json())
+        return web.json_response({'Info': 'post'}, status=201)
+
+    @Simple.subpermission
+    async def put(self):
+        print(await self.request.json())
+        return web.json_response({'Info': 'put'}, status=201)
+
+    @Admin.subpermission
+    async def delete(self):
+        print(await self.request.json())
+        return web.json_response({'Info': 'delete'}, status=201)
