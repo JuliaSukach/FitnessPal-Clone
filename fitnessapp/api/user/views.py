@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from fitnessapp.settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 from fitnessapp.utils.crypto import fernet
-from fitnessapp.permissions import Admin, Staff, Simple
+# from fitnessapp.permissions import Admin, Staff, Simple
 import base64
 
 
