@@ -1,0 +1,137 @@
+{#{% extends 'base.html' %}#}
+{#{% block registration %}#}
+{#    <h1>User Registration</h1>#}
+{#    <form action="/register" method="POST">#}
+{#        <label for="access_token">Google Access Token:</label>#}
+{#        <input type="text" id="access_token" name="access_token"><br><br>#}
+{#        <input type="submit" value="Register">#}
+{#    </form>#}
+{##}
+{#    {% if message %}#}
+{#        <p>{{ message }}</p>#}
+{#    {% endif %}#}
+{#{% endblock registration %}#}
+{% extends 'base.html' %}
+{% block registration %}
+<form method="POST" style="
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+">
+        <h3 style="
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+">Login Here</h3>
+
+        <label for="username" style="
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+">Username</label>
+        <input name="username" type="text" placeholder="Username" id="username" style="
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+">
+
+        <label for="username" style="
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+">Login</label>
+        <input name="email" type="text" placeholder="Email or Phone" id="username" style="
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+">
+
+        <label for="password" style="
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+">Password</label>
+        <input name="password" type="password" placeholder="Password" id="password" style="
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+">
+
+        <button type="submit" style="
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+">Log In</button>
+        <div class="social" style="
+    margin-top: 30px;
+    display: flex;
+">
+          <div class="go" style="
+    background: red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgb(22 22 22 / 27%);
+    color: #eaf0fb;
+    text-align: center;
+"><i class="fab fa-google" style="
+    margin-right: 4px;
+"></i>  Google</div>
+
+        </div>
+    </form>
+{#    <h1>Sign Up</h1>#}
+{#    <p>Choose how you want to sign up:</p>#}
+{#    <div class="signup-options">#}
+{#        <div class="signup-option google-signup">#}
+{#            <a href="/register">#}
+{#                <img src="../static/img/google-icon.png" alt="Sign up with Google">#}
+{#                Sign in with Google#}
+{#            </a>#}
+{#        </div>#}
+{#        <div class="signup-option email-signup">#}
+{#            <a href="/register">#}
+{#                <img src="" alt="Create a login and password">#}
+{#                Create a login and <password></password>#}
+{#            </a>#}
+{#        </div>#}
+{#    </div>#}
+
+{% endblock registration %}
