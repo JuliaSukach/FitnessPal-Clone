@@ -13,9 +13,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from fitnessapp.settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 from fitnessapp.utils.crypto import fernet
-from fitnessapp.utils.serializer import Serializer
 # from fitnessapp.permissions import Admin, Staff, Simple
 import base64
+
+
+class Serializer(json.JSONEncoder):
+    def default(self, value):
+        if isinstance(value, datetime):
+            return value.isoformat()
+        return str(value)
 
 
 class UserView(web.View):
@@ -148,3 +154,4 @@ class AuthView(web.View):
     async def delete(self):
         # remove refresh_token
         ...
+
