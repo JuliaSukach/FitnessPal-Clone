@@ -2,7 +2,7 @@ from aiohttp import web
 from aiohttp_jinja2 import template
 from tortoise.exceptions import DoesNotExist
 
-from fitnessapp.api.user.models import User
+from fitnessapp.web.user.models import User
 
 import base64
 from fitnessapp.utils.crypto import fernet
