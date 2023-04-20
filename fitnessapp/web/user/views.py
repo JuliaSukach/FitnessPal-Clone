@@ -1,6 +1,7 @@
 import base64
 import smtplib
 import ssl
+import arrow
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -8,10 +9,86 @@ import aiohttp
 from aiohttp import web
 from aiohttp_jinja2 import template
 
-from fitnessapp.settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
-from .models import User
-# from fitnessapp.api.user.models import User
+from fitnessapp.settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, GOOGLE_CLIENT_ID, \
+    GOOGLE_CLIENT_SECRET
+from .models import User, Post, Comment
 from ...utils.crypto import fernet
+
+
+class UserProfile(web.View):
+    async def get_current_user(self):
+        # Get current user from session or database, e.g.
+        # user_id = self.request.session.get('user_id')
+        # if user_id:
+        #     user = await User.get(id=user_id)
+        #     return user
+        # return None
+
+        return await User.get(username='yuliyasukach123@gmail.com')
+
+    @template('profile.html')
+    async def get(self):
+        print('get')
+        posts = await Post.all().order_by('-created_at').select_related('user')
+        posts_dict = {}
+        comments_dict = {}
+        for post in posts:
+            comments = await post.comments.all().select_related('user')
+            comments_data = []
+            for comment in comments:
+                # calculate time ago for comment
+                created_at = arrow.get(comment.created_at).humanize()
+                comments_data.append({
+                    'id': comment.id,
+                    'content': comment,
+                    'username': comment.user.username,
+                    'created_at': created_at
+                })
+            comments_dict[post.id] = comments_data
+            posts_dict[post.id] = {
+                'post': post,
+                'comments': comments_data,
+                'username': post.user.username,
+                'created_at': arrow.get(post.created_at).humanize()
+            }
+        return {'posts': posts_dict}
+
+    async def post(self):
+        print('post')
+        if 'create_post' in await self.request.post():
+            user = await self.get_current_user()
+            post_data = await self.request.post()
+            content = post_data.get('content')
+            await Post.create(user=user, content=content)
+            return web.HTTPFound(location='/profile')
+        elif 'create_comment' in await self.request.post():
+            user = await self.get_current_user()
+            comment_data = await self.request.post()
+            post_id = int(comment_data.get('post_id'))
+            content = comment_data.get('create_comment')
+            post = await Post.get(id=post_id)
+            await Comment.create(user=user, post=post, content=content)
+            return web.HTTPFound(location='/profile')
+        if 'delete_comment_id' in await self.request.post():
+            comment_data = await self.request.post()
+            comment_id = int(comment_data.get('delete_comment_id'))
+            await self.delete_comment(comment_id)
+            return web.HTTPFound(location='/profile')
+        if 'delete_post' in await self.request.post():
+            post_data = await self.request.post()
+            post_id = int(post_data.get('delete_post'))
+            await self.delete_post(post_id)
+            return web.HTTPFound(location='/profile')
+        else:
+            pass
+
+    async def delete_comment(self, comment_id):
+        comment = await Comment.get(id=comment_id)
+        await comment.delete()
+
+    async def delete_post(self, post_id):
+        post = await Post.get(id=post_id)
+        await post.delete()
 
 
 class UserAuth(web.View):
@@ -21,7 +98,6 @@ class UserAuth(web.View):
 
     async def post(self):
         data = await self.request.post()
-        # new_user = await User.create(**data)
         new_user = await User.create(username=data['username'], email=data['email'], password=data['password'])
         context = ssl.create_default_context()
 
@@ -118,4 +194,4 @@ class GoogleOAuth2Callback(web.View):
         finally:
             server.quit()
 
-        return web.json_response({'result': f'{new_user.username=}'}, status=200)
+        return web.HTTPFound('/profile')

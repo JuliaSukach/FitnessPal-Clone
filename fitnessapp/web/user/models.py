@@ -53,10 +53,25 @@ class User(models.Model):
         return False
 
 
-class UserCreate(PydanticModel):
-    username: str
-    email: str
-    password: str
+class Post(models.Model):
+    id = fields.IntField(pk=True)
+    user = fields.ForeignKeyField('user.User', related_name='posts')
+    content = fields.TextField()
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    id = fields.IntField(pk=True)
+    user = fields.ForeignKeyField('user.User', related_name='comments')
+    post = fields.ForeignKeyField('user.Post', related_name='comments')
+    content = fields.TextField()
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
 
 
 @pre_save(User)
