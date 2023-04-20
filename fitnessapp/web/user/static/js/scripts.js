@@ -7,7 +7,21 @@ document.addEventListener("DOMContentLoaded", () => {
       '&redirect_uri=http://localhost:8000/auth/google/callback' +
       '&scope=https://www.googleapis.com/auth/userinfo.email'
 
-    document.getElementById('go').addEventListener('click', () => {
-      window.location.href = googleAuthUrl
+    let button = document.getElementById('go')
+    if (button) {
+        button.addEventListener('click', () => {
+          window.location.href = googleAuthUrl
+        })
+    }
+    const form = document.getElementById('create-comment')
+    const textarea = document.querySelector("textarea[name='create_comment']")
+
+    if (textarea) {
+        textarea.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13 && !event.shiftKey) {
+            event.preventDefault() // prevent newline from being added
+            form.submit()// trigger form submission
+        }
     })
+    }
 })
