@@ -5,7 +5,7 @@ from fitnessapp.utils.crypto import Enigma
 
 def generate_access_token(user_id):
     payload = {
-        'user': user_id,
+        'sub': user_id,
         'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=15),
         'iat': datetime.datetime.utcnow(),
     }

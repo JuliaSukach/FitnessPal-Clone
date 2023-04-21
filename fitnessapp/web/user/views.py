@@ -82,16 +82,21 @@ class UserProfile(web.View):
             post = await Post.get(id=post_id)
             await Comment.create(user=user, post=post, content=content)
             return web.HTTPFound(location='/profile')
-        if 'delete_comment_id' in await self.request.post():
+        elif 'delete_comment_id' in await self.request.post():
             comment_data = await self.request.post()
             comment_id = int(comment_data.get('delete_comment_id'))
             await self.delete_comment(comment_id)
             return web.HTTPFound(location='/profile')
-        if 'delete_post' in await self.request.post():
+        elif 'delete_post' in await self.request.post():
             post_data = await self.request.post()
             post_id = int(post_data.get('delete_post'))
             await self.delete_post(post_id)
             return web.HTTPFound(location='/profile')
+        elif 'logout' in await self.request.post():
+            response = web.HTTPFound('/login')
+            response.del_cookie('access_token')
+            response.del_cookie('refresh_token')
+            return response
         else:
             pass
 
@@ -159,6 +164,43 @@ class UserAuth(web.View):
             print(e)
         finally:
             server.quit()
+
+        return response
+
+
+class UserLogin(web.View):
+    @template('login.html')
+    async def get(self):
+        return {'key': 'Info'}
+
+    async def post(self):
+        data = await self.request.post()
+
+        # check if user exists in the database
+        user = await User.get_or_none(username=data['username'])
+        if user is None:
+            # user not found, return error message
+            return web.Response(text="Invalid username or password", status=401)
+
+        # check if password is correct
+        if not user.check_password(data['password']):
+            # password is incorrect, return error message
+            return web.Response(text="Invalid username or password", status=401)
+
+        # set session and tokens for authenticated user
+        session = await get_session(self.request)
+        session['user_id'] = user.id
+
+        access_token = generate_access_token(user.id)
+        refresh_token = generate_refresh_token(user.id)
+
+        user.refresh = refresh_token
+        await user.save(update_fields=['refresh'])
+
+        # Set cookies for tokens in the response
+        response = web.HTTPFound('/profile')
+        response.set_cookie('access_token', access_token, httponly=True)
+        response.set_cookie('refresh_token', refresh_token, httponly=True)
 
         return response
 

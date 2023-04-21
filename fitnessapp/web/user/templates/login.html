@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
-{% block registration %}
-    <form class='registration' method="POST">
-        <h3>Sign Up Here</h3>
+{% block login %}
+    <form class='login' method="POST">
+        <h3>Login Here</h3>
         <label for="username">Username</label>
         <input name="username" type="text" placeholder="Username" id="username">
-
-        <label for="login">Login</label>
-        <input name="email" type="text" placeholder="Email or Phone" id="email">
 
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="Password" id="password">
@@ -16,5 +13,4 @@
           <div class="go" id="go"><i class="fab fa-google"></i>Google</div>
         </div>
     </form>
-
-{% endblock registration %}
+{% endblock login %}
