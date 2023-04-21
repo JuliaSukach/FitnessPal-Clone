@@ -78,3 +78,15 @@ class Comment(models.Model):
 async def hash_password(sender, instance, using_db, updated_fields):
     if instance.id is None or 'password' in updated_fields:
         instance.make_passwd()
+
+
+class Message(models.Model):
+    id = fields.BigIntField(pk=True)
+    sender = fields.ForeignKeyField('user.User', related_name='sent_messages')
+    recipient = fields.ForeignKeyField('user.User', related_name='received_messages')
+    content = fields.TextField()
+    timestamp = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        table = 'messages'
+        ordering = ('-timestamp',)
