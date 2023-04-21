@@ -1,6 +1,9 @@
 import base64
 import smtplib
 import ssl
+from typing import Optional
+import jwt
+
 import arrow
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -8,27 +11,38 @@ from email.mime.text import MIMEText
 import aiohttp
 from aiohttp import web
 from aiohttp_jinja2 import template
+from aiohttp_session import get_session
 
 from fitnessapp.settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, GOOGLE_CLIENT_ID, \
     GOOGLE_CLIENT_SECRET
 from .models import User, Post, Comment
-from ...utils.crypto import fernet
+from ...utils.crypto import fernet, Enigma
+from ...utils.tokens import generate_access_token, generate_refresh_token
 
 
 class UserProfile(web.View):
-    async def get_current_user(self):
-        # Get current user from session or database, e.g.
-        # user_id = self.request.session.get('user_id')
-        # if user_id:
-        #     user = await User.get(id=user_id)
-        #     return user
-        # return None
-
-        return await User.get(username='yuliyasukach123@gmail.com')
+    async def get_current_user(self) -> Optional[User]:
+        refresh = self.request.cookies.get('refresh_token')
+        try:
+            alg = jwt.get_unverified_header(refresh)['alg']
+        except jwt.InvalidTokenError:
+            return web.json_response({'message': 'Invalid data'}, status=401)
+        try:
+            payload = jwt.decode(refresh, Enigma.public_key, algorithms=[alg])
+        except jwt.exceptions.InvalidTokenError:
+            return None
+        user_id = payload.get('sub')
+        if not user_id:
+            return None
+        user = await User.get(id=user_id)
+        return user
+        # # return await User.get(username='yuliyasukach123@gmail.com')
 
     @template('profile.html')
     async def get(self):
-        print('get')
+        user = await self.get_current_user()
+        if not user:
+            return web.HTTPFound(location='/register')
         posts = await Post.all().order_by('-created_at').select_related('user')
         posts_dict = {}
         comments_dict = {}
@@ -51,10 +65,9 @@ class UserProfile(web.View):
                 'username': post.user.username,
                 'created_at': arrow.get(post.created_at).humanize()
             }
-        return {'posts': posts_dict}
+        return {'posts': posts_dict, 'user': user}
 
     async def post(self):
-        print('post')
         if 'create_post' in await self.request.post():
             user = await self.get_current_user()
             post_data = await self.request.post()
@@ -99,6 +112,23 @@ class UserAuth(web.View):
     async def post(self):
         data = await self.request.post()
         new_user = await User.create(username=data['username'], email=data['email'], password=data['password'])
+
+        # create and save session
+        session = await get_session(self.request)
+        session['user_id'] = new_user.id
+
+        # generate access and refresh tokens
+        access_token = generate_access_token(new_user.id)
+        refresh_token = generate_refresh_token(new_user.id)
+
+        new_user.refresh = refresh_token
+        await new_user.save(update_fields=['refresh'])
+
+        # Set cookies for tokens in the response
+        response = web.HTTPFound('/profile')
+        response.set_cookie('access_token', access_token, httponly=True)
+        response.set_cookie('refresh_token', refresh_token, httponly=True)
+
         context = ssl.create_default_context()
 
         # send email to new user
@@ -130,7 +160,7 @@ class UserAuth(web.View):
         finally:
             server.quit()
 
-        return web.json_response({'result': f'{new_user.username=}'}, status=200)
+        return response
 
 
 class GoogleOAuth2Callback(web.View):
