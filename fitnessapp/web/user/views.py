@@ -36,7 +36,6 @@ class UserProfile(web.View):
             return None
         user = await User.get(id=user_id)
         return user
-        # # return await User.get(username='yuliyasukach123@gmail.com')
 
     @template('profile.html')
     async def get(self):
