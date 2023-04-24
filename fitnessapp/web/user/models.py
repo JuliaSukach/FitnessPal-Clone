@@ -81,12 +81,13 @@ async def hash_password(sender, instance, using_db, updated_fields):
 
 
 class Message(models.Model):
-    id = fields.BigIntField(pk=True)
+    id = fields.IntField(pk=True)
     sender = fields.ForeignKeyField('user.User', related_name='sent_messages')
     recipient = fields.ForeignKeyField('user.User', related_name='received_messages')
     content = fields.TextField()
-    timestamp = fields.DatetimeField(auto_now_add=True)
+    created_at = fields.DatetimeField(auto_now_add=True)
+    sent = fields.BooleanField(default=False)
 
     class Meta:
         table = 'messages'
-        ordering = ('-timestamp',)
+

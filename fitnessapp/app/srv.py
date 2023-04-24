@@ -1,10 +1,9 @@
+import json
 import os
 
 import jinja2
-import pathlib
 from aiohttp import web
-from aiohttp_session import setup as session_setup, session_middleware
-from aiohttp_session import get_session, SimpleCookieStorage
+from aiohttp_session import setup as session_setup
 from aiohttp_session.cookie_storage import EncryptedCookieStorage
 from aiohttp_jinja2 import setup as jinja_setup
 from tortoise.contrib.aiohttp import register_tortoise
@@ -12,6 +11,8 @@ from controller import controller_setup
 from fitnessapp.utils.crypto import Enigma
 from fitnessapp import settings
 from .middles import check_data, check_info, auth_token
+from .websocket import websocket_handler
+from ..web.user.view.chat import UserChat
 
 
 def create_app():
@@ -30,17 +31,9 @@ def create_app():
         return web.FileResponse(full_path)
 
     app.router.add_route('GET', '/static/{path:.*}', serve_static)
-
-    static_dir = settings.BASE_DIR / 'web/user/static'
-
-    async def serve_static(request):
-        path = request.match_info.get('path', '')
-        full_path = static_dir / path.lstrip('/')
-        if not full_path.is_file():
-            raise web.HTTPNotFound()
-        return web.FileResponse(full_path)
-
-    app.router.add_route('GET', '/static/{path:.*}', serve_static)
+    # Add the WebSocket connection handler
+    app['websockets'] = []
+    app.add_routes([web.get('/ws', websocket_handler)])
 
     jinja_setup(
         app,
@@ -56,6 +49,9 @@ def create_app():
 
     controller_setup(app, root_urls='fitnessapp.web.root.urls')  # entry point
     register_tortoise(app, config=settings.DB_CONFIG, generate_schemas=True)
+
+    # Add the route for the Dynamic url
+    app.add_routes([web.route('*', '/messages/{recipient_id}',  UserChat)])
     return app
 
 
