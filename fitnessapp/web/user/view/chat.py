@@ -12,9 +12,10 @@ from fitnessapp.utils.broadcast import broadcast
 from fitnessapp.utils.crypto import Enigma
 from fitnessapp.utils.serializer import Serializer
 from fitnessapp.web.user.models import Message, User
+from fitnessapp.web.user.views import BaseView
 
 
-class UserMessenger(web.View):
+class UserMessenger(BaseView):
     @template('messenger.html')
     async def get(self):
         sender_id = await self.get_current_user()
@@ -35,23 +36,8 @@ class UserMessenger(web.View):
         await self.save_message(sender_id, recipient_id, message_content)
         return web.HTTPFound('/messages')
 
-    async def get_current_user(self) -> Optional[User]:
-        refresh = self.request.cookies.get('refresh_token')
-        try:
-            alg = jwt.get_unverified_header(refresh)['alg']
-        except jwt.InvalidTokenError:
-            return web.json_response({'message': 'Invalid data'}, status=401)
-        try:
-            payload = jwt.decode(refresh, Enigma.public_key, algorithms=[alg])
-        except jwt.exceptions.InvalidTokenError:
-            return None
-        user_id = payload.get('sub')
-        if not user_id:
-            return None
-        return user_id
 
-
-class UserChat(web.View):
+class UserChat(BaseView):
     @template('chat.html')
     async def get(self):
         sender_id = await self.get_current_user()
@@ -99,18 +85,3 @@ class UserChat(web.View):
 
         return json_response({'recipients': users, 'recipient': recipient, 'messages': messages}, status=200, dumps=lambda v: json.dumps(v, cls=Serializer))
 
-
-    async def get_current_user(self) -> Optional[User]:
-        refresh = self.request.cookies.get('refresh_token')
-        try:
-            alg = jwt.get_unverified_header(refresh)['alg']
-        except jwt.InvalidTokenError:
-            return web.json_response({'message': 'Invalid data'}, status=401)
-        try:
-            payload = jwt.decode(refresh, Enigma.public_key, algorithms=[alg])
-        except jwt.exceptions.InvalidTokenError:
-            return None
-        user_id = payload.get('sub')
-        if not user_id:
-            return None
-        return user_id
