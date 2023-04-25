@@ -20,7 +20,7 @@ from ...utils.crypto import fernet, Enigma
 from ...utils.tokens import generate_access_token, generate_refresh_token
 
 
-class UserProfile(web.View):
+class BaseView(web.View):
     async def get_current_user(self) -> Optional[User]:
         refresh = self.request.cookies.get('refresh_token')
         try:
@@ -34,9 +34,10 @@ class UserProfile(web.View):
         user_id = payload.get('sub')
         if not user_id:
             return None
-        user = await User.get(id=user_id)
-        return user
+        return user_id
 
+
+class UserProfile(BaseView):
     @template('profile.html')
     async def get(self):
         user = await self.get_current_user()
@@ -64,7 +65,8 @@ class UserProfile(web.View):
                 'username': post.user.username,
                 'created_at': arrow.get(post.created_at).humanize()
             }
-        return {'posts': posts_dict, 'user': user}
+        user_data = await User.get(id=user)
+        return {'posts': posts_dict, 'user': user_data}
 
     async def post(self):
         if 'create_post' in await self.request.post():
@@ -182,29 +184,27 @@ class UserLogin(web.View):
             return web.Response(text="Invalid username or password", status=401)
 
         # check if password is correct
-        if not user.check_password(data['password']):
-            # password is incorrect, return error message
-            return web.Response(text="Invalid username or password", status=401)
+        if await user.check_password(data['password']):
+            # set session and tokens for authenticated user
+            session = await get_session(self.request)
+            session['user_id'] = user.id
 
-        # set session and tokens for authenticated user
-        session = await get_session(self.request)
-        session['user_id'] = user.id
+            access_token = generate_access_token(user.id)
+            refresh_token = generate_refresh_token(user.id)
 
-        access_token = generate_access_token(user.id)
-        refresh_token = generate_refresh_token(user.id)
+            user.refresh = refresh_token
+            await user.save(update_fields=['refresh'])
 
-        user.refresh = refresh_token
-        await user.save(update_fields=['refresh'])
-
-        # Set cookies for tokens in the response
-        response = web.HTTPFound('/profile')
-        response.set_cookie('access_token', access_token, httponly=True)
-        response.set_cookie('refresh_token', refresh_token, httponly=True)
-
-        return response
+            # Set cookies for tokens in the response
+            response = web.HTTPFound('/profile')
+            response.set_cookie('access_token', access_token, httponly=True)
+            response.set_cookie('refresh_token', refresh_token, httponly=True)
+            return response
+        # password is incorrect, return error message
+        return web.Response(text="Invalid username or password", status=401)
 
 
-class GoogleOAuth2Callback(web.View):
+class GoogleOAuth2Callback(BaseView):
     async def get(self):
         # Get the authorization code from the query parameters
         authorization_code = self.request.query.get('code')
@@ -231,9 +231,28 @@ class GoogleOAuth2Callback(web.View):
 
         # Save the user's email address to the database
         email = email_data['email']
-        print(email)
 
         new_user = await User.create(username=email, email=email, password='admin')
+
+        # create and save session
+        session = await get_session(self.request)
+        session['user_id'] = new_user.id
+
+        # generate access and refresh tokens
+        access_token = generate_access_token(new_user.id)
+        refresh_token = generate_refresh_token(new_user.id)
+        print(refresh_token)
+
+        new_user.refresh = refresh_token
+        await new_user.save(update_fields=['refresh'])
+
+        # Set cookies for tokens in the response
+        response = web.HTTPFound('/profile')
+        response.set_cookie('access_token', access_token, httponly=True)
+        response.set_cookie('refresh_token', refresh_token, httponly=True)
+
+        print(self.request.cookies.get('refresh_token'))
+
         context = ssl.create_default_context()
 
         # send email to new user
@@ -265,4 +284,44 @@ class GoogleOAuth2Callback(web.View):
         finally:
             server.quit()
 
-        return web.HTTPFound('/profile')
+        return response
+
+
+class UserDetails(BaseView):
+    @template('profile_edit.html')
+    async def get(self):
+        user = await self.get_current_user()
+        if not user:
+            return web.HTTPFound(location='/register')
+        user_data = await User.get(id=user)
+        return {'user': user_data}
+
+    async def post(self):
+        user_id = await self.get_current_user()
+        user_data = await self.request.post()
+        username = user_data.get('username')
+        email = user_data.get('email')
+        current_password = user_data['current_password']
+        new_password = user_data['new_password']
+        confirm_password = user_data['confirm_password']
+        user = await User.get_or_none(id=user_id)
+        if not user:
+            return web.HTTPUnauthorized()
+        if email == '':
+            email = user.email
+
+        if current_password != '':
+            if not await user.check_password(current_password):
+                return web.json_response({'message': 'Current password is incorrect'}, status=400)
+
+            if new_password != confirm_password:
+                return web.json_response({'message': 'New passwords do not match'}, status=400)
+
+            user.password = new_password
+            user.make_passwd()
+
+        await User.filter(id=user_id).update(username=username, email=email, password=user.password)
+
+        return web.HTTPFound(location='/profile')
+
+
