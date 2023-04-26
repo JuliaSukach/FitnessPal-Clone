@@ -31,6 +31,10 @@ label {
     font-weight: 500;
 }
 
+input#username, input#password, input#email{
+    width: 100%
+}
+
 input {
     display: block;
     height: 50px;
@@ -69,6 +73,7 @@ input {
     color: #eaf0fb;
     text-align: center;
     cursor: pointer;
+    margin-left: 100px;
 }
 
 .fa-google {

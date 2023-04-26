@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block search_meal %}
+    <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-12upb36">
+        <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+            <div class="MuiToolbar-root MuiToolbar-regular css-1szvam0"><a
+                    class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1dtb50s"
+                    aria-label="Home" href="/">Yulia's Fitness App</a>
+                <div class="MuiBox-root css-1ilyui9"></div>
+                <div class="MuiBox-root css-70qvj9"><span
+                        class="MuiTypography-root MuiTypography-caption css-vyf9q6">Hi, <a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-17z4o4n"
+                            href="/profile/{{ user.id }}">{{ user }}</a></span>
+                        <form method="post" action="/profile">
+                            <button type="submit" name="logout">Log Out</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-regular css-eg6my0">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-10z0jsg"
+                            href="/profile">My Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="food/diary">Food</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/exercise/diary">Exercise</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/reports">Reports</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/apps/logged_in_index">Apps</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://community.myfitnesspal.com/en/entry/jsconnect?client_id=1122755462&amp;Target=%2Fcategories">Community</a>
+                    </div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://blog.myfitnesspal.com/">Blog</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/premium?source=menu_bar">Premium</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-uom0n6">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1sw7z84"
+                            data-testid="" href="/">Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/my-goals">Goals</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/measurements/check-in">Check-In</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            href="/messages" data-testid="mail-Link">Mail</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/profile/yuliyasukach123">Profile</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/friends">Friends</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/settings">Settings</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="wrap">
+        <div id="main" style="
+        padding: 20px 0 4em;
+    ">
+            <h1 class="main-title">Add Food To The Diary</h1>
+            <div id="searchFoodByName">
+                <form class="form" action="/food" accept-charset="UTF-8" method="post">
+                <input type="hidden" name="authenticity_token" value="BiY0zjO6TF8WsJMaRAytIk4ytTwTcktsUejgmX53fn91kkdPIWe1vXkGEprOXS2zdhfkQIZQwOM33dMWN1mQsA==" autocomplete="off" style="
+            font-size: 1em;
+            line-height: normal;
+            width: auto;
+            vertical-align: middle;
+        ">
+                <h3 class="secondary-title" style="
+            color: #444444;
+            display: block;
+            position: relative;
+            text-align: left;
+        ">Search our food database by name
+                    <a href="/food/quick_add?date=2023-04-25&amp;meal=0">
+                    Quick add calories
+                    </a>
+                </h3>
+                <p class="fields" style="
+            padding: 0;
+        ">
+                    <input type="hidden" name="meal" value="0">
+                    <input type="hidden" name="date" value="2023-04-25">
+                    <input type="text" name="search" id="search" autocomplete="off" class="text" style="
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px;
+            width: 440px;
+            display: inline-block;
+        " value={{ search }}>
+                    <input type="submit" class="button" value="Search" style="
+        ">
+                 </p>
+            </form>
+            </div>
+            <h4 class="secondary-title search_">Matching Foods:</h4>
+            <div class="col-1" style="width: 420px;position: relative;float: left;">
+                <ul id="matching">
+                    {% for food in food_data %}
+                        <li class="matched-food">
+                            <div class="search-title-container">
+                              <a class="search" data-index="1" data-food-type="0" data-external-id="133478875958517" data-original-id="2212315071" data-version="19524445113533" data-verified="true" data-weight-ids="2505866547,2505866548,2505866549,2505866550,2505866551,2505866552,2505866553,2505866554,2505866555,2505866556,2505866557,2505866558,2505866559,2505866560,2505866561,2505866562,2505866563,2505866564" only_path="true">{{ food.food_name }}</a>
+                                <div class="verified verified-list-icon"></div>
+                            </div>
+                              <p class="search-nutritional-info">
+                                  {{ food.serving_unit }}, {{ food.nf_calories }} calories
+                              </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <form id="food-nutritional-details-form" action="/food/search" accept-charset="UTF-8" method="post">
+                <input type="hidden" name="authenticity_token" value="/2QRtJgOeX9ZGr4QaYIG0eJHKkz/X7PJu5DzqTF5Vd5cfWx2xlkU+5O5TfjSYKatqdSUsUUXEC0ojxORPc5n8A==" autocomplete="off">
+                <div class="col-2 block-3" id="servings">
+                    <div id="loaded_item">&nbsp;</div>
+                    <div id="loading" style="display: none;">
+                        <img src="https://d34yn14tavczy0.cloudfront.net/assets/ajax-loader-c13e409df9f7857a630500bf35a39fe925ecfca5ccfcf294e359d47d6fb07e07.gif">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock search_meal %}

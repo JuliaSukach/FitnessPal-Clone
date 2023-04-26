@@ -1,15 +1,10 @@
-import asyncio
 import json
-from typing import Optional
-
-import jwt
 from aiohttp import web
 from aiohttp.web_response import json_response
 from aiohttp_jinja2 import template
 from tortoise.expressions import Q
 
 from fitnessapp.utils.broadcast import broadcast
-from fitnessapp.utils.crypto import Enigma
 from fitnessapp.utils.serializer import Serializer
 from fitnessapp.web.user.models import Message, User
 from fitnessapp.web.user.views import BaseView

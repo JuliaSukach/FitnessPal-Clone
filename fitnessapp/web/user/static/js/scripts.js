@@ -97,4 +97,125 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
     }
+
+    const matchedFood = document.querySelectorAll(' li.matched-food')
+    for (let i = 0; i < matchedFood.length; i++) {
+        matchedFood[i].addEventListener('click', function(event) {
+            let oldFoodDesc = document.querySelector('input.food-description')
+            if (oldFoodDesc) {
+                oldFoodDesc.remove()
+                document.querySelector('h3.second').remove()
+                document.querySelector('input#food_entry_quantity').remove()
+                document.querySelector('select#food_entry_weight_id').remove()
+                document.querySelector('p.serving').remove()
+                document.querySelector('h3.third').remove()
+                document.querySelector('select#food_entry_meal_id').remove()
+                document.querySelector('input#update_servings').remove()
+            }
+
+            let foodName = document.createElement('input')
+            foodName.classList.add('food-description')
+            foodName.setAttribute('name', 'food-description')
+            foodName.setAttribute('type', 'text')
+            foodName.setAttribute('value',event.currentTarget.querySelector('a.search').textContent)
+
+
+            let secondTitle = document.createElement('h3')
+            secondTitle.classList.add('secondary-title', 'second')
+            secondTitle.innerText='How much?'
+
+            let foodQ = document.createElement('input')
+            foodQ.setAttribute('id','food_entry_quantity')
+            foodQ.setAttribute('name','food_entry')
+            foodQ.classList.add('text', 'short')
+            foodQ.setAttribute('value','1')
+
+            let foodEntry = document.createElement('select')
+            foodEntry.setAttribute('id','food_entry_weight_id')
+            foodEntry.setAttribute('name','food_entry')
+            foodEntry.classList.add('select')
+
+            let option = document.createElement("option")
+            option.setAttribute("value", event.currentTarget.querySelector('p.search-nutritional-info').textContent.trim())
+            let text = document.createTextNode(event.currentTarget.querySelector('p.search-nutritional-info').textContent)
+            option.appendChild(text)
+            foodEntry.appendChild(option)
+
+            let serving = document.createElement('p')
+            serving.classList.add('serving')
+            serving.innerText='serivng of'
+
+            let thirdTitle = document.createElement('h3')
+            thirdTitle.classList.add('secondary-title', 'third')
+            thirdTitle.innerText='To which meal?'
+
+            let foodMealId = document.createElement('select')
+            foodMealId.setAttribute('id','food_entry_meal_id')
+            foodMealId.setAttribute('name','food_entry_meal_id')
+            foodMealId.classList.add('select')
+
+            let option1 = document.createElement("option")
+            option1.setAttribute("value", "0")
+            let text1 = document.createTextNode("Breakfast")
+            option1.appendChild(text1)
+            foodMealId.append(option1)
+
+            let option2 = document.createElement("option")
+            option2.setAttribute("value", "1")
+            let text2 = document.createTextNode("Lunch")
+            option2.appendChild(text2)
+            foodMealId.append(option2)
+
+            let option3 = document.createElement("option")
+            option3.setAttribute("value", "2")
+            let text3 = document.createTextNode("Dinner")
+            option3.appendChild(text3)
+            foodMealId.append(option3)
+
+            let option4 = document.createElement("option")
+            option4.setAttribute("value", "3")
+            let text4 = document.createTextNode("Snacks")
+            option4.appendChild(text4)
+            foodMealId.append(option4)
+
+            let buttonLog = document.createElement('input')
+            buttonLog.setAttribute('id','update_servings')
+            buttonLog.setAttribute('type','submit')
+            buttonLog.classList.add('button', 'log')
+            buttonLog.innerHTML='Add Food To Diary'
+
+
+            let loadedBox = document.querySelector('div#loaded_item')
+            loadedBox.append(foodName, secondTitle, foodQ, foodEntry, serving, thirdTitle, foodMealId, buttonLog)
+        })
+    }
+
+    function deleteMeal(event) {
+          event.preventDefault()
+            debugger
+          const mealId = event.target.dataset.mealId
+          fetch('/food/diary', {
+            method: 'delete',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ meal_id: mealId })
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.reload();
+            } else {
+              alert('Error deleting meal');
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            alert('Error deleting meal');
+          })
+    }
+
+    document.querySelectorAll('.delete-meal').forEach(function(element) {
+        element.addEventListener('click', deleteMeal)
+    })
+
 })

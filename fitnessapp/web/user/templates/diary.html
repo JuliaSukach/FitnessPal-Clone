@@ -1,0 +1,498 @@
+{% extends 'base.html' %}
+{% block diary %}
+    <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-12upb36">
+        <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+            <div class="MuiToolbar-root MuiToolbar-regular css-1szvam0"><a
+                    class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1dtb50s"
+                    aria-label="Home" href="/">Yulia's Fitness App</a>
+                <div class="MuiBox-root css-1ilyui9"></div>
+                <div class="MuiBox-root css-70qvj9"><span
+                        class="MuiTypography-root MuiTypography-caption css-vyf9q6">Hi, <a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-17z4o4n"
+                            href="/profile/{{ user.id }}">{{ user }}</a></span>
+                        <form method="post" action="/profile">
+                            <button type="submit" name="logout">Log Out</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-regular css-eg6my0">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-10z0jsg"
+                            href="/profile">My Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="food/diary">Food</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/exercise/diary">Exercise</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/reports">Reports</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/apps/logged_in_index">Apps</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://community.myfitnesspal.com/en/entry/jsconnect?client_id=1122755462&amp;Target=%2Fcategories">Community</a>
+                    </div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://blog.myfitnesspal.com/">Blog</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/premium?source=menu_bar">Premium</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-uom0n6">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1sw7z84"
+                            data-testid="" href="/">Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/my-goals">Goals</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/measurements/check-in">Check-In</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            href="/messages" data-testid="mail-Link">Mail</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/profile/yuliyasukach123">Profile</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/friends">Friends</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/settings">Settings</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="wrap">
+        <div id="content">
+        <div id="main">
+            <div class="diary">
+                <h1>Your Food Diary For:</h1>
+                <div id="date_controls">
+                    <form class="date-controls-form" action="/food/diary" accept-charset="UTF-8" method="post"><input
+                            type="hidden" name="authenticity_token"
+                            value="dn01VErcVjx36mj1xhPHBOw0mfqdJ8oDBzPJL8bbnu7d/c/5uGHYm1ip/BSBcRiqSC9dACHfKdhNfKsEKdhR7g=="
+                            autocomplete="off">
+                        <span class="date">
+                            <a class="prev" href="/food/diary?date=2023-04-24">
+                                <i class="icon-caret-left"></i>
+                            </a> <time>
+                                Wednesday, April 26, 2023
+                            </time>
+                            <a class="next" href="/food/diary?date=2023-04-26">
+                                <i class="icon-caret-right"></i>
+                            </a> </span>
+
+                        <input type="hidden" value="2023-04-25" name="hidden_date_selector" id="date_selector"
+                            class="hasDatepicker">
+                        <i class="icon-calendar" id="datepicker-trigger"></i>
+
+                    </form>
+                </div>
+            </div>
+            <div class="food_container container">
+                <table class="table0 " id="diary-table">
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-2">
+                        <col class="col-2">
+                        <col class="col-2">
+                        <col class="col-2">
+                        <col class="col-2">
+                        <col class="col-8">
+                    </colgroup>
+                    <tbody>
+                        <tr class="meal_header">
+                            <td class="first alt">Breakfast</td>
+                            <td class="alt nutrient-column">
+                                Calories
+                                <div class="subtitle">kcal</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Carbs
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Fat
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Protein
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Sodium
+                                <div class="subtitle">mg</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Sugar
+                                <div class="subtitle">g</div>
+                            </td>
+                        </tr>
+                        {% for meal in breakfast_meals %}
+                            <tr>
+                                <td class="first alt">
+                                    <a class="js-show-edit-food" data-food-entry-id="10451178452" data-locale="" href="#">
+                                        {{ meal.name }}
+                                    </a>
+                              </td>
+                                <td>80</td>
+                                <td>
+                                <span class="macro-value">22</span>
+                                <span class="macro-percentage">100</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>0</td>
+                                <td>17</td>
+                                <td class="delete">
+                                    <a href="#" class="delete-meal" data-meal-id="{{ meal.id }}">X</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="bottom">
+                            <td class="first alt" style="z-index: 10">
+
+                                <a class="add_food" href="/food/add_to_diary">Add Food</a>
+
+                            </td>
+
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td></td>
+
+                        </tr>
+
+
+
+                        <tr class="meal_header">
+
+                            <td class="first alt">Lunch</td>
+                        </tr>
+                        {% for meal in lunch_meals %}
+                            <tr>
+                                <td class="first alt">
+                                    <a class="js-show-edit-food" data-food-entry-id="10451178452" data-locale="" href="#">
+                                        {{ meal.name }}
+                                    </a>
+                              </td>
+                                <td>80</td>
+                                <td>
+                                <span class="macro-value">22</span>
+                                <span class="macro-percentage">100</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>0</td>
+                                <td>17</td>
+                                <td class="delete">
+                                  <a href="#" class="delete-meal" data-meal-id="{{ meal.id }}">X</a>
+                              </td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="bottom">
+                            <td class="first alt" style="z-index: 9">
+                                <a class="add_food" href="/food/add_to_diary">Add Food</a>
+
+                            </td>
+
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td></td>
+
+                        </tr>
+
+
+
+                        <tr class="meal_header">
+
+                            <td class="first alt">Dinner</td>
+                        </tr>
+                        {% for meal in dinner_meals %}
+                            <tr>
+                                <td class="first alt">
+                                    <a class="js-show-edit-food" data-food-entry-id="10451178452" data-locale="" href="#">
+                                        {{ meal.name }}
+                                    </a>
+                              </td>
+                                <td>80</td>
+                                <td>
+                                <span class="macro-value">22</span>
+                                <span class="macro-percentage">100</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>0</td>
+                                <td>17</td>
+                                <td class="delete">
+                                  <a href="#" class="delete-meal" data-meal-id="{{ meal.id }}">X</a>
+                              </td>
+                            </tr>
+                        {% endfor %}
+
+
+
+                        <tr class="bottom">
+
+                            <td class="first alt" style="z-index: 8">
+
+                                <a class="add_food" href="/food/add_to_diary">Add Food</a>
+
+                            </td>
+
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td></td>
+
+                        </tr>
+
+
+
+                        <tr class="meal_header">
+
+                            <td class="first alt">Snacks</td>
+                        </tr>
+                        {% for meal in snacks_meals %}
+                            <tr>
+                                <td class="first alt">
+                                    <a class="js-show-edit-food" data-food-entry-id="10451178452" data-locale="" href="#">
+                                        {{ meal.name }}
+                                    </a>
+                              </td>
+                                <td>80</td>
+                                <td>
+                                <span class="macro-value">22</span>
+                                <span class="macro-percentage">100</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>
+                                <span class="macro-value">0</span>
+                                <span class="macro-percentage">0</span>
+                              </td>
+                                <td>0</td>
+                                <td>17</td>
+                                <td class="delete">
+                                  <a href="#" class="delete-meal" data-meal-id="{{ meal.id }}">X</a>
+                              </td>
+                            </tr>
+                        {% endfor %}
+                        <tr class="bottom">
+                            <td class="first alt" style="z-index: 7">
+                                <a class="add_food" href="/food/add_to_diary">Add Food</a>
+                            </td>
+
+                            <td>&nbsp;</td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>
+                                <span class="macro-value">&nbsp;</span>
+                                <span class="macro-percentage">
+                                    &nbsp;
+                                </span>
+                            </td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td>&nbsp;</td>
+
+
+                            <td></td>
+
+                        </tr>
+
+
+                        <tr class="spacer">
+                            <td class="first" colspan="6">&nbsp;</td>
+                            <td class="empty">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+
+                            <td class="first"></td>
+                            <td class="alt nutrient-column">
+                                Calories
+                                <div class="subtitle">kcal</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Carbs
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Fat
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Protein
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Sodium
+                                <div class="subtitle">mg</div>
+                            </td>
+                            <td class="alt nutrient-column">
+                                Sugar
+                                <div class="subtitle">g</div>
+                            </td>
+                            <td class="empty"></td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- / .table-container -->
+        </div><!-- / #main -->
+    </div><!-- / #content -->
+    </div>
+{% endblock diary %}
