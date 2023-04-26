@@ -17,6 +17,16 @@ class UserStatus(IntEnum):
         return self.name
 
 
+class MealType(IntEnum):
+    BREAKFAST = 0
+    LUNCH = 1
+    DINNER = 2
+    SNACKS = 3
+
+    def __str__(self):
+        return self.name
+
+
 class User(models.Model):
     id = fields.BigIntField(pk=True)
     username = fields.CharField(max_length=120, unique=True)
@@ -90,4 +100,17 @@ class Message(models.Model):
 
     class Meta:
         table = 'messages'
+
+
+class Meal(models.Model):
+    user = fields.ForeignKeyField('user.User', related_name='meals')
+    name = fields.CharField(max_length=255)
+    calories = fields.TextField()
+    meal_type = fields.IntEnumField(MealType, default=MealType.BREAKFAST)
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        table = 'meals'
+        ordering = ('-created_at',)
+
 

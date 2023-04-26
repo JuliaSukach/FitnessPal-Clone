@@ -1,15 +1,10 @@
-import asyncio
 import json
-from typing import Optional
-
-import jwt
 from aiohttp import web
 from aiohttp.web_response import json_response
 from aiohttp_jinja2 import template
 from tortoise.expressions import Q
 
 from fitnessapp.utils.broadcast import broadcast
-from fitnessapp.utils.crypto import Enigma
 from fitnessapp.utils.serializer import Serializer
 from fitnessapp.web.user.models import Message, User
 from fitnessapp.web.user.views import BaseView
@@ -64,11 +59,12 @@ class UserChat(BaseView):
         recipient_id = form.get('recipient_id')
         message_content = form.get('message')
         sender_id = await self.get_current_user()
+        sender = await User.get(id=sender_id)
 
         # save the message to the database
         await Message.create(sender_id=sender_id, recipient_id=recipient_id, content=message_content)
 
-        await broadcast(message_content, sender_id)
+        await broadcast(message_content, sender_id, sender.username)
 
         # get the updated chat data
         messages = await Message.filter(

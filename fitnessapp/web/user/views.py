@@ -1,4 +1,5 @@
 import base64
+import secrets
 import smtplib
 import ssl
 from typing import Optional
@@ -73,7 +74,7 @@ class UserProfile(BaseView):
             user = await self.get_current_user()
             post_data = await self.request.post()
             content = post_data.get('content')
-            await Post.create(user=user, content=content)
+            await Post.create(user_id=user, content=content)
             return web.HTTPFound(location='/profile')
         elif 'create_comment' in await self.request.post():
             user = await self.get_current_user()
@@ -81,7 +82,7 @@ class UserProfile(BaseView):
             post_id = int(comment_data.get('post_id'))
             content = comment_data.get('create_comment')
             post = await Post.get(id=post_id)
-            await Comment.create(user=user, post=post, content=content)
+            await Comment.create(user_id=user, post=post, content=content)
             return web.HTTPFound(location='/profile')
         elif 'delete_comment_id' in await self.request.post():
             comment_data = await self.request.post()
@@ -231,58 +232,61 @@ class GoogleOAuth2Callback(BaseView):
 
         # Save the user's email address to the database
         email = email_data['email']
+        # Check if the user already exists in the database
+        user = await User.get_or_none(username=email)
 
-        new_user = await User.create(username=email, email=email, password='admin')
+        if user is None:
+            password = secrets.token_urlsafe(16)
+            user = await User.create(username=email, email=email, password=password)
+
+            context = ssl.create_default_context()
+
+            # send email to new user
+            msg = MIMEMultipart()
+            msg['Subject'] = 'Welcome to My Website!'
+            msg['From'] = EMAIL_HOST_USER
+            msg['To'] = user.email
+
+            # create message body
+            link = f"http://localhost:8000/activate/{user.id}"
+            encrypted_link = fernet.encrypt(link.encode()).decode()
+            encoded_link = base64.urlsafe_b64encode(encrypted_link.encode()).decode()
+
+            final_link = f"http://localhost:8000/activate/{encoded_link}"
+            body = f"Dear {user.username},\n\nWelcome to My Website!" \
+                   f"Thank you for creating an account." \
+                   f"Please click on the following link to activate your account: {final_link}"
+
+            msg.attach(MIMEText(body, 'plain'))
+
+            try:
+                server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
+                server.starttls(context=context)
+                server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
+
+                server.sendmail(EMAIL_HOST_USER, user.email, msg.as_string())
+            except Exception as e:
+                print(e)
+            finally:
+                server.quit()
+        else:
+            # If the user already exists, log them in
+            password = user.password
 
         # create and save session
         session = await get_session(self.request)
-        session['user_id'] = new_user.id
+        session['user_id'] = user.id
 
         # generate access and refresh tokens
-        access_token = generate_access_token(new_user.id)
-        refresh_token = generate_refresh_token(new_user.id)
-        print(refresh_token)
-
-        new_user.refresh = refresh_token
-        await new_user.save(update_fields=['refresh'])
+        access_token = generate_access_token(user.id)
+        refresh_token = generate_refresh_token(user.id)
+        user.refresh = refresh_token
+        await user.save(update_fields=['refresh'])
 
         # Set cookies for tokens in the response
         response = web.HTTPFound('/profile')
         response.set_cookie('access_token', access_token, httponly=True)
         response.set_cookie('refresh_token', refresh_token, httponly=True)
-
-        print(self.request.cookies.get('refresh_token'))
-
-        context = ssl.create_default_context()
-
-        # send email to new user
-        msg = MIMEMultipart()
-        msg['Subject'] = 'Welcome to My Website!'
-        msg['From'] = EMAIL_HOST_USER
-        msg['To'] = new_user.email
-
-        # create message body
-        link = f"http://localhost:8000/activate/{new_user.id}"
-        encrypted_link = fernet.encrypt(link.encode()).decode()
-        encoded_link = base64.urlsafe_b64encode(encrypted_link.encode()).decode()
-
-        final_link = f"http://localhost:8000/activate/{encoded_link}"
-        body = f"Dear {new_user.username},\n\nWelcome to My Website!" \
-               f"Thank you for creating an account." \
-               f"Please click on the following link to activate your account: {final_link}"
-
-        msg.attach(MIMEText(body, 'plain'))
-
-        try:
-            server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
-            server.starttls(context=context)
-            server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
-
-            server.sendmail(EMAIL_HOST_USER, new_user.email, msg.as_string())
-        except Exception as e:
-            print(e)
-        finally:
-            server.quit()
 
         return response
 
@@ -323,5 +327,14 @@ class UserDetails(BaseView):
         await User.filter(id=user_id).update(username=username, email=email, password=user.password)
 
         return web.HTTPFound(location='/profile')
+
+    async def delete(self):
+        user_id = await self.get_current_user()
+        user = await User.get_or_none(id=user_id)
+        if not user:
+            return web.HTTPUnauthorized()
+        await user.delete()
+        return web.json_response({'message': 'User deleted successfully'})
+
 
 
