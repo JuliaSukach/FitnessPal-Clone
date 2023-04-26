@@ -59,11 +59,12 @@ class UserChat(BaseView):
         recipient_id = form.get('recipient_id')
         message_content = form.get('message')
         sender_id = await self.get_current_user()
+        sender = await User.get(id=sender_id)
 
         # save the message to the database
         await Message.create(sender_id=sender_id, recipient_id=recipient_id, content=message_content)
 
-        await broadcast(message_content, sender_id)
+        await broadcast(message_content, sender_id, sender.username)
 
         # get the updated chat data
         messages = await Message.filter(

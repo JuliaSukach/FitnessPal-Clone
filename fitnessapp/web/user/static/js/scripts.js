@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let button = document.getElementById('go')
     if (button) {
-        button.addEventListener('click', () => {
-          window.location.href = googleAuthUrl
+        button.addEventListener('click', (event) => {
+            event.preventDefault()
+            window.location.href = googleAuthUrl
         })
     }
     const form = document.getElementById('create-comment')
@@ -40,37 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
         socket.onmessage = function(event) {
             let data = JSON.parse(event.data)
             console.log('Received message:', data)
+            let rec_id = document.getElementsByName("recipient_id")[0].value
             let message = document.createElement('div')
-            message.classList.add(`chat-message-${data.sender == recipient_id ? 'left' : 'right'}`, 'pb-4')
+            message.classList.add(`chat-message-${data.sender == rec_id ? 'left' : 'right'}`, 'pb-4')
             message.innerHTML += `<div>
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
-                <div class="text-muted small text-nowrap mt-2">2:33 am</div>
+                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                <div class="text-muted small text-nowrap mt-2">${Date.now()}</div>
             </div>
             <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div class="font-weight-bold mb-1">You</div>
+                <div class="font-weight-bold mb-1">${data.sender == rec_id ? data.sender_name : 'You'}</div>
                 ${data.message}
             </div>`
             messagesBox.appendChild(message)
         }
 
-        // let sendMessage = () => {
-        //     let message = 'Hello, server!'
-        //     socket.send(message)
-        //     console.log('Message sent:', message)
-        // }
-        // sendButton.addEventListener('click', sendMessage)
-        input.addEventListener('keypress', function(event) {
-            if (event.keyCode === 13) { // 13 is the Enter key
-                const message = input.value
-                socket.send(message)
-                console.log('Message sent:', message)
-                input.value = ''
-            }
-        })
-
-        messageForm.addEventListener('submit', event => {
-            event.preventDefault()
-
+        let sendMessage = () => {
+            debugger
             const formData = new FormData(messageForm)
             const recipientId = formData.get('recipient_id')
             const message = formData.get('message')
@@ -95,6 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(error => {
                 console.error('Error sending message to server:', error)
             })
+        }
+
+        messageForm.addEventListener('submit', event => {
+            event.preventDefault()
+            sendMessage()
         })
     }
 
@@ -192,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function deleteMeal(event) {
           event.preventDefault()
-            debugger
           const mealId = event.target.dataset.mealId
           fetch('/food/diary', {
             method: 'delete',
@@ -216,6 +206,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('.delete-meal').forEach(function(element) {
         element.addEventListener('click', deleteMeal)
+    })
+
+    const deleteLinks = document.querySelectorAll('.delete-user')
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const userId = event.target.dataset.userId
+            const response = await fetch(`/profile/${userId}`, { method: 'delete' })
+            if (response.ok) {
+                console.log('deleted')
+                location.reload()
+            } else {
+                const errorMessage = await response.text();
+                alert(`Error deleting user: ${errorMessage}`);
+            }
+        })
     })
 
 })

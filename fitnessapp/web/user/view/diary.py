@@ -85,7 +85,6 @@ class SearchMeal(BaseView):
 
         search_query = self.request.query.get('search')
         food_results = await search_food(search_query)
-        print(food_results)
         return {'user': user, 'food_data': food_results, 'search': search_query}
 
 
