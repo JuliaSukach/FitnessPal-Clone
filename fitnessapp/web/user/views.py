@@ -67,7 +67,11 @@ class UserProfile(BaseView):
                 'created_at': arrow.get(post.created_at).humanize()
             }
         user_data = await User.get(id=user)
-        return {'posts': posts_dict, 'user': user_data}
+        return {
+            'posts': posts_dict,
+            'user': user_data,
+            'current_url': str(self.request.rel_url)
+        }
 
     async def post(self):
         if 'create_post' in await self.request.post():
