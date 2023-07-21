@@ -19,9 +19,17 @@
                                     <div class="css-m1ydac">
                                         <div class="MuiBox-root css-t36dd3">
                                             <div class="css-ighrqg">
-                                                <p class="MuiTypography-root MuiTypography-caption css-1okb3ry"
-                                                    data-testid="qa-regression-label-no-photo">No photo provided
-                                                </p>
+                                                <div class="col-1" id="big_image_box" style="float: left;">
+                                                    {% if user.image_name %}
+                                                        <a href="/profile/{{ user.id }}">
+                                                            <img src="/dynamic/img/{{ user.image_name }}" alt="Uploaded Photo" style="position: absolute;inset: 0px;box-sizing: border-box;padding: 0px;border: none;margin: auto;display: block;width: 0px;min-width: 100%;max-width: 100%;min-height: 100%;max-height: 100%;object-fit: cover;height: 275px;cursor: pointer;">
+                                                        </a>
+                                                    {% else %}
+                                                        <p class="MuiTypography-root MuiTypography-caption css-1okb3ry"
+                                                            data-testid="qa-regression-label-no-photo">No photo provided
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
                                                 <h6 class="MuiTypography-root MuiTypography-h6 css-14a07fm"><a
                                                         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-dgqh4k"
                                                         href="/photos/edit">Upload photo</a></h6>

@@ -24,6 +24,7 @@ def create_app():
     session_setup(app, EncryptedCookieStorage(app['SECRET_KEY']))
 
     static_dir = settings.BASE_DIR / 'web/user/static'
+    dynamic_dir = settings.BASE_DIR / 'web/user/dynamic'
 
     async def serve_static(request):
         path = request.match_info.get('path', '')
@@ -32,9 +33,16 @@ def create_app():
             raise web.HTTPNotFound()
         return web.FileResponse(full_path)
 
+    async def serve_dynamic(request):
+        path = request.match_info.get('path', '')
+        full_path = dynamic_dir / path.lstrip('/')
+        if not full_path.is_file():
+            raise web.HTTPNotFound()
+        return web.FileResponse(full_path)
+
     app.router.add_route('GET', '/static/{path:.*}', serve_static)
+    app.router.add_route('GET', '/dynamic/{path:.*}', serve_dynamic)
     # Add the WebSocket connection handler
-    app['websockets'] = []
     app.add_routes([web.get('/ws', websocket_handler)])
 
     jinja_setup(

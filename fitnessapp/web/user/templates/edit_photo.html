@@ -8,17 +8,26 @@
         <div id="content">
             <div id="main">
 	            <h2 class="main-title">Your Photos</h2>
-                <div class="block-1 edit" id="profile">
-		            <div class="col-1" id="big_image_box">
-      	                <p>You have not uploaded a photo yet</p>
+                <div class="block-1 edit" id="profile" style="height: 410px;">
+		            <div class="col-1" id="big_image_box" style="float: left;display: flex;flex-direction: column;">
+      	                {% if photo_url %}
+                            <img src="{{ photo_url }}" alt="Uploaded Photo" style="margin-right: 20px;">
+                            <div class="button_holder">
+                                <form action="/photos/edit" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="delete" value="1">
+                                    <button class="btn-submit" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        {% else %}
+                            <p>You have not uploaded a photo yet</p>
+                        {% endif %}
                     </div>
-		            <div class="col-2">
+		            <div class="col-2" style="float: left; display: block;">
                         <h3 class="main-title-2">Add A New Photo*</h3>
                         <div id="flash"></div>
                         <p>To add a photo to your profile, first choose a photo from your computer, then click "Upload Photo"</p>
-                        <form class="captcha-form" enctype="multipart/form-data" action="/photos/upload" accept-charset="UTF-8" method="post">
-                            <input type="hidden" name="authenticity_token" value="mcreBn5EcEFPhMSsJkil3W5+30jZUYe6YDwr3ewncIj10ct3kr5PUXkM0kPqKzRtsBdWwa+reO6WjrtgXhwRXw==" autocomplete="off">
-			                <input type="file" name="Filedata" size="30">
+                        <form class="captcha-form" enctype="multipart/form-data" action="/photos/edit" accept-charset="UTF-8" method="post">
+			                <input type="file" name="photo" size="30">
 				            <p>
                                 <div>
                                     <div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
@@ -36,11 +45,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="separator">Click on an image below to select it</div>
-	            <div id="thumbnailcontainer">
-    	            <ul id="photo_thumbnails"></ul>
-                </div>
-                <div class="clear"></div>
+                <div class="separator" style="box-sizing: initial;">Click on an image below to select it</div>
             </div><!-- / #main -->
             <div id="sidebar"></div><!-- / #sidebar -->
         </div><!-- / #content -->
