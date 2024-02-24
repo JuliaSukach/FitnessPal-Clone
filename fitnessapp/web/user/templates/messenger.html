@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block chat %}
+    <main class="content">
+        <div class="container p-0">
+            <h1 class="h3 mb-3">Messages</h1>
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-12 col-lg-5 col-xl-3 border-right">
+                        <div class="px-4 d-none d-md-block">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <input type="text" class="form-control my-3" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                       {% for recipient in recipients %}
+                           <a href="/messages/{{ recipient.id }}" class="list-group-item list-group-item-action border-0 mate">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        {{ recipient.username}}
+                                    </div>
+                                </div>
+                           </a>
+                        {% endfor %}
+                        <hr class="d-block d-lg-none mt-1 mb-0">
+                    </div>
+                    <div class="col-12 col-lg-7 col-xl-9">
+                        message
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock chat %}

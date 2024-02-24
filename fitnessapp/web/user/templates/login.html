@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block login %}
+    <form class='login' method="POST">
+        <h3>Login Here</h3>
+        <label for="username">Username</label>
+        <input name="username" type="text" placeholder="Username" id="username">
+
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="Password" id="password">
+
+        <button type="submit" class="submit">Log In</button>
+        <div class="social">
+          <div class="go" id="go"><i class="fab fa-google"></i>Google</div>
+        </div>
+    </form>
+{% endblock login %}
