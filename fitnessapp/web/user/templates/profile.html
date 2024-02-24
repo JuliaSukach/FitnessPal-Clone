@@ -1,0 +1,490 @@
+{% extends 'base.html' %}
+{% block profile %}
+    <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-12upb36">
+        <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+            <div class="MuiToolbar-root MuiToolbar-regular css-1szvam0"><a
+                    class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1dtb50s"
+                    aria-label="Home" href="/">Yulia's Fitness App</a>
+                <div class="MuiBox-root css-1ilyui9"></div>
+                <div class="MuiBox-root css-70qvj9"><span
+                        class="MuiTypography-root MuiTypography-caption css-vyf9q6">Hi, <a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-17z4o4n"
+                            href="/profile/{{ user.id }}">{{ user }}</a></span>
+                        <form method="post" action="/profile">
+                            <button type="submit" name="logout">Log Out</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-regular css-eg6my0">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-10z0jsg"
+                            href="/profile">My Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="food/diary">Food</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/exercise/diary">Exercise</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/reports">Reports</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/en/apps/logged_in_index">Apps</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://community.myfitnesspal.com/en/entry/jsconnect?client_id=1122755462&amp;Target=%2Fcategories">Community</a>
+                    </div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="https://blog.myfitnesspal.com/">Blog</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1i8enoe"
+                            href="/premium?source=menu_bar">Premium</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-uom0n6">
+            <div class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-18rmlqv">
+                <div class="MuiGrid-root MuiGrid-container css-1d3bbye">
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1sw7z84"
+                            data-testid="" href="/">Home</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/my-goals">Goals</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/measurements/check-in">Check-In</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            href="/messages" data-testid="mail-Link">Mail</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/profile/yuliyasukach123">Profile</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/friends">Friends</a></div>
+                    <div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1ncw7et"
+                            data-testid="" href="/account/settings">Settings</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="MuiContainer-root MuiContainer-maxWidthMd css-1udhdkt">
+        <main class="MuiBox-root css-vpuckr">
+            <div class="css-1l4f1eo">
+                <div class="MuiBox-root css-15y92lb">
+                    <div role="main" class="css-m5vuyl">
+                        <div class="MuiBox-root css-0">
+                            <div class="MuiGrid-root MuiGrid-container css-1sltu20">
+                                <div class="MuiGrid-root MuiGrid-item css-lhmnzp">
+                                    <h1 class="MuiTypography-root MuiTypography-h5 css-o6gz1y"
+                                        data-testid="qa-regression-label-your-daily-summary">Your Daily Summary
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-container css-7xppjq">
+                                <div class="MuiGrid-root MuiGrid-item css-1c8vq1o">
+                                    <div class="css-m1ydac">
+                                        <div class="MuiBox-root css-t36dd3">
+                                            <div class="css-ighrqg">
+                                                <p class="MuiTypography-root MuiTypography-caption css-1okb3ry"
+                                                    data-testid="qa-regression-label-no-photo">No photo provided
+                                                </p>
+                                                <h6 class="MuiTypography-root MuiTypography-h6 css-14a07fm"><a
+                                                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-dgqh4k"
+                                                        href="/en/photos/edit">Upload photo</a></h6>
+                                            </div>
+                                        </div>
+                                        <div class="css-14bbjq5">
+                                            <div class="MuiGrid-root MuiGrid-container css-1w933o1">
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 css-1epph9x">
+                                                    <p
+                                                        class="MuiTypography-root MuiTypography-body1 css-1tjfx9q">
+                                                        0</p>
+                                                    <p class="MuiTypography-root MuiTypography-h5 css-xc4vl6">kg
+                                                    </p>
+                                                </div>
+                                                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 css-eo995u"
+                                                    data-testid="qa-regression-track-measurements-icon">
+                                                    <div class="MuiBox-root css-bifs4g">
+                                                        <div class="MuiBox-root css-ae49tk"><a
+                                                                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                                                                href="/measurements/check-in"><span
+                                                                    style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span
+                                                                        style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img
+                                                                            style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0"
+                                                                            alt="" aria-hidden="true"
+                                                                            src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2742%27%20height=%2788%27/%3e" /></span><img
+                                                                        alt="scale photo"
+                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                        decoding="async" data-nimg="intrinsic"
+                                                                        style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" /><noscript><img
+                                                                            alt="scale photo"
+                                                                            src="/_next/static/media/scale-icons.50f7d8c2.png"
+                                                                            decoding="async"
+                                                                            data-nimg="intrinsic"
+                                                                            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
+                                                                            loading="lazy" /></noscript></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="MuiGrid-root MuiGrid-container css-bztqp5">
+                                                <p class="MuiTypography-root MuiTypography-h6 css-7ziy3k">LOST
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="MuiGrid-root MuiGrid-item css-koo75d">
+                                    <p class="MuiTypography-root MuiTypography-body1 css-15ey1op">Calories
+                                        Remaining <span
+                                            class="MuiTypography-root MuiTypography-caption css-16z0631">Change</span>
+                                    </p>
+                                    <div class="MuiBox-root css-177tisd">
+                                        <div class="MuiGrid-root MuiGrid-container css-m9vrrz">
+                                            <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-auto css-z92sg3">
+                                                <p class="MuiTypography-root MuiTypography-body1 css-br8ltw">
+                                                    1890</p>
+                                            </div>
+                                            <div
+                                                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-sm-8 MuiGrid-grid-tb-9 MuiGrid-grid-md-8 css-1adnrps">
+                                                <div class="MuiGrid-root MuiGrid-container css-431azc">
+                                                    <div
+                                                        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1n834u0">
+                                                        <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                                                            href="/en/exercise/diary"><button
+                                                                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-fullWidth css-1c9g0vr"
+                                                                tabindex="0" type="button"><span
+                                                                    class="MuiTypography-root MuiTypography-caption css-15a1e0q"
+                                                                    data-testid="add-exercise-btn">Add
+                                                                    Exercise</span></button></a></div>
+                                                    <div
+                                                        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1b94enl">
+                                                        <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                                                            href="/food/diary"><button
+                                                                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-fullWidth css-1c9g0vr"
+                                                                tabindex="0" type="button"><span
+                                                                    class="MuiTypography-root MuiTypography-caption css-15a1e0q"
+                                                                    data-testid="add-food-btn">Add Food</span></button></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root css-1wlfdeu">
+                                            <div class="MuiGrid-root MuiGrid-container css-dsartl">
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 css-jp6jpp">
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-mdp0y6"
+                                                        data-testid="qa-regression-label-daily-energy-formula-value qa-regression-label-label-energy-goal-value">
+                                                        1890</p>
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-qdrlqr"
+                                                        data-testid="qa-regression-labels-daily-energy-formula-units">
+                                                        Goal</p>
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 css-1fyxfow">
+                                                    <hr
+                                                        class="MuiDivider-root MuiDivider-middle MuiDivider-vertical css-by55gm" />
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 css-jp6jpp">
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-mdp0y6"
+                                                        data-testid="qa-regression-label-daily-energy-formula-value qa-regression-label-label-energy-goal-value">
+                                                        0</p>
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-qdrlqr"
+                                                        data-testid="qa-regression-labels-daily-energy-formula-units">
+                                                        Food</p>
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 css-1g03rb9">
+                                                    <div class="MuiBox-root css-epychj">-</div>
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 css-jp6jpp">
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-mdp0y6"
+                                                        data-testid="qa-regression-label-daily-energy-formula-value qa-regression-label-energy-exercise-value">
+                                                        0</p>
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-qdrlqr"
+                                                        data-testid="qa-regression-labels-daily-energy-formula-units">
+                                                        Exercise</p>
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 css-1g03rb9">
+                                                    <div class="MuiBox-root css-epychj">=</div>
+                                                </div>
+                                                <div
+                                                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 css-jp6jpp">
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-mdp0y6"
+                                                        data-testid="qa-regression-label-daily-energy-formula-value qa-regression-label-energy-net-value">
+                                                        0</p>
+                                                    <p class="MuiTypography-root MuiTypography-body1 css-qdrlqr"
+                                                        data-testid="qa-regression-labels-daily-energy-formula-units">
+                                                        Net</p>
+                                                </div>
+                                            </div>
+                                            <div class="MuiBox-root css-afe7p7">
+                                                <div class="MuiGrid-root MuiGrid-container css-1pmgwjo"
+                                                    data-testid="qa-regression-label-weight-progress-bar">
+                                                    <div class="MuiBox-root css-qmk4ua"></div>
+                                                    <div class="MuiBox-root css-f2u3nr"></div>
+                                                </div>
+                                                <div class="MuiBox-root css-9xoeg1"></div>
+                                                <div class="MuiBox-root css-xn64m5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MuiGrid-root MuiGrid-item css-1wxaqej">
+                            <div class="MuiBox-root css-0" role="region" aria-label="News Feed">
+                                <div class="MuiGrid-root MuiGrid-container css-1sltu20">
+                                    <div class="MuiGrid-root MuiGrid-item css-lhmnzp">
+                                        <h1 class="MuiTypography-root MuiTypography-h5 css-o6gz1y"
+                                            data-testid="qa-regression-label-newsfeed">News Feed</h1>
+                                    </div>
+                                </div>
+                                <form class="css-1rhrso4" method="post" action="/profile">
+                                    <div
+                                        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-19ps8ps">
+                                        <div
+                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-12ar0hs">
+                                            <textarea aria-invalid="false" id=":Rqjej3eijbc6:"
+                                                name="content" placeholder="What&#x27;s on your mind?"
+                                                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-u36398"></textarea>
+                                            <fieldset aria-hidden="true"
+                                                class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                                <legend class="css-ihdtdm"><span class="notranslate">​</span>
+                                                </legend>
+                                            </fieldset>
+                                        </div>
+                                    </div><button
+                                        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall css-q4yb5a"
+                                        tabindex="0" type="submit" name="create_post">Share</button>
+                                </form>
+                            </div>
+                            <div class="MuiBox-root css-0">
+                                <div class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column css-1clgndx">
+                                    {% for post_id, post_data in posts.items() %}
+                                        <div class="MuiGrid-root MuiGrid-item css-1wxaqej">
+                                            <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-gdcdiw"
+                                                data-testid="qa-regression-wall-post-block">
+                                                <div class="MuiBox-root css-15raeun">
+                                                    <div class="MuiBox-root css-s4lllc"><a
+                                                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                                                            href="/profile/lovesumerki123">
+                                                            <div class="MuiBox-root css-1z2tjz"><span
+                                                                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                                        alt="user photo"
+                                                                        src="/_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=3840&amp;q=75"
+                                                                        decoding="async" data-nimg="fill"
+                                                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                                                                        sizes="100vw"
+                                                                        srcset="/_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=320&amp;q=75 320w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=375&amp;q=75 375w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=425&amp;q=75 425w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=512&amp;q=75 512w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=640&amp;q=75 640w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=750&amp;q=75 750w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=828&amp;q=75 828w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo_thumbnail.png&amp;w=3840&amp;q=75 3840w"></span>
+                                                            </div>
+                                                        </a></div>
+                                                    <div class="css-hnb0o5">
+                                                        <div class="MuiBox-root css-gg4vpm">
+                                                            <div class="css-nclbym"><a
+                                                                    class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                                                                    href="/profile/lovesumerki123">
+                                                                    <p class="MuiTypography-root MuiTypography-body1 css-cmdqow">{{ post_data.username }}&nbsp;
+                                                                    </p>
+                                                                </a>
+                                                                <p class="MuiTypography-root MuiTypography-body1 css-15lzmv5">
+                                                                    {{ post_data.created_at }}</p>
+                                                            </div>
+                                                            <form method="post" action="/profile" onsubmit="return confirm('Are you sure you want to delete this post?')">
+                                                                <input type="hidden" name="delete_post" value="{{ post_id }}">
+                                                                <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1td7v4t" tabindex="0" type="submit" aria-label="Close"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8feus5" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CloseIcon"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="MuiBox-root css-da8f8f">
+                                                            <p class="MuiTypography-root MuiTypography-body1 css-1yi1rsx"
+                                                                data-testid="qa-regression-post-text">{{ post_data.post.content }}</p>
+                                                        </div>
+                                                        <div class="MuiBox-root css-u7k355">
+                                                            <div class="MuiBox-root css-9y6x14"><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d2he87" focusable="false"
+                                                                    aria-hidden="true" viewBox="0 0 24 24" data-testid="ThumbUpAltIcon">
+                                                                    <path
+                                                                        d="M2 20h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1H2v11zm19.83-7.12c.11-.25.17-.52.17-.8V11c0-1.1-.9-2-2-2h-5.5l.92-4.65c.05-.22.02-.46-.08-.66-.23-.45-.52-.86-.88-1.22L14 2 7.59 8.41C7.21 8.79 7 9.3 7 9.83v7.84C7 18.95 8.05 20 9.34 20h8.11c.7 0 1.36-.37 1.72-.97l2.66-6.15z">
+                                                                    </path>
+                                                                </svg><span class="MuiTypography-root MuiTypography-caption css-ip3kk">Like</span></div>
+                                                            <p class="MuiTypography-root MuiTypography-body1 css-1bdkdbt">•</p>
+                                                            <div class="MuiBox-root css-1ygklqn"><svg
+                                                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gxdnfm" focusable="false"
+                                                                    aria-hidden="true" viewBox="0 0 24 24" data-testid="MessageIcon">
+                                                                    <path
+                                                                        d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z">
+                                                                    </path>
+                                                                </svg>
+                                                                <p class="MuiTypography-root MuiTypography-body1 css-195sgc8">Comment</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="MuiBox-root css-yezmbp">
+                                                    {% for comment in post_data.comments %}
+                                                        <div class="MuiBox-root css-58nl00">
+                                                            <div class="MuiBox-root css-1uv01wq"><span
+                                                                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"><span
+                                                                        style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"><img
+                                                                            alt="" aria-hidden="true"
+                                                                            src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2728%27%20height=%2728%27/%3e"
+                                                                            style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"></span><img
+                                                                        alt="user_profile" src="https://d34yn14tavczy0.cloudfront.net/images/no_photo_thumbnail.png"
+                                                                        decoding="async" data-nimg="intrinsic"
+                                                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                                                            </div>
+                                                            <div class="MuiBox-root css-j7qwjs">
+                                                                <div class="MuiBox-root css-k008qs">
+                                                                    <div class="MuiBox-root css-37urdo"><a
+                                                                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1pg45zz"
+                                                                            href="/profile/yuliyasukach123"><span
+                                                                                class="MuiTypography-root MuiTypography-caption css-ccfki1">{{ comment.username }}</span></a>
+                                                                        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-1ka4wla">{{ comment.content }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="MuiBox-root css-1dtnjt5"><span class="MuiTypography-root MuiTypography-caption css-9p5ccf">{{ comment.created_at }}</span>
+                                                                    <div class="MuiBox-root css-6n7j50"><span class="MuiTypography-root MuiTypography-caption css-zsz5jh">
+                                                                            <p class="MuiTypography-root MuiTypography-body1 css-1pc4ti9">•</p>Like
+                                                                        </span></div>
+                                                                    <div class="MuiBox-root css-1e1quyi"><span class="MuiTypography-root MuiTypography-caption css-zsz5jh">
+                                                                            <p class="MuiTypography-root MuiTypography-body1 css-1pc4ti9">•</p>
+                                                                            <form method="post" action="/profile">
+                                                                                <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                                                                                <button type="submit">Delete</button>
+                                                                            </form>
+                                                                        </span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="MuiBox-root css-kir5uy">
+                                                    <div class="MuiBox-root css-j0d88i"><span
+                                                            style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                                                                alt="yuliyasukach123 profile picture" sizes="100vw"
+                                                                srcset="/_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=320&amp;q=75 320w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=375&amp;q=75 375w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=425&amp;q=75 425w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=512&amp;q=75 512w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=640&amp;q=75 640w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=750&amp;q=75 750w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=828&amp;q=75 828w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=3840&amp;q=75 3840w"
+                                                                src="/_next/image?url=https%3A%2F%2Fd34yn14tavczy0.cloudfront.net%2Fimages%2Fno_photo.png&amp;w=3840&amp;q=75"
+                                                                decoding="async" data-nimg="fill"
+                                                                style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
+                                                    </div>
+                                                    <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-mn3us1">
+                                                        <div
+                                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-12ar0hs">
+                                                            <form id='create-comment' method="post" action="/profile">
+                                                                <input type="hidden" name="post_id" value="{{ post_id }}">
+                                                                <textarea  name="create_comment" aria-invalid="false" id=":r1:" name="create_comment" placeholder="Write something..."
+                                                                    data-testid="qa-regression-post-write-field"
+                                                                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-u36398"
+                                                                    style="height: 19px; overflow: hidden;"></textarea><textarea aria-hidden="true"
+                                                                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-u36398" readonly=""
+                                                                    tabindex="-1"
+                                                                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0px); padding: 0px; width: 351px;"></textarea>
+                                                            </form>
+                                                            <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+                                                                <legend class="css-ihdtdm"><span class="notranslate">&ZeroWidthSpace;</span></legend>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="css-wjqqbj">
+                    <div class="MuiBox-root css-15i1vgz">
+                        <div class="MuiBox-root css-pummgu" title="Top Right Ad">
+                            <div class="MuiBox-root css-0" id="MyHome/Home_1"></div>
+                        </div>
+                    </div>
+                    <div class="MuiBox-root css-108pbjf">
+                        <div class="MuiBox-root css-1hxzbui" title="Bottom Right Ad">
+                            <div class="MuiBox-root css-0" id="MyHome/Home_2"></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+    <footer class="MuiBox-root css-g0t3np">
+        <div class="MuiBox-root css-pskig2">
+            <ul class="MuiBox-root css-r54vba">
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/">Calorie Counter</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="https://blog.myfitnesspal.com">Blog</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/terms-of-service">Terms</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/privacy-policy">Privacy</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/contact-us">Contact Us</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/api">API</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/jobs">Jobs</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="https://community.myfitnesspal.com/en/entry/jsconnect?client_id=1122755462&amp;Target=%2Fcategories%2Ffeature-suggestions-and-ideas">Feedback</a>
+                </li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/community-guidelines">Community Guidelines</a></li>
+                <li class="MuiBox-root css-5cm1aq"><button class="MuiButtonBase-root css-1b47e06" tabindex="0"
+                        type="button" variant="text">
+                        <p class="MuiTypography-root MuiTypography-body1 css-1hanubv">Cookie Preferences</p>
+                    </button></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        target="_blank" href="/privacy-policy#interest-based-advertising">Ad Choices</a></li>
+                <li class="MuiBox-root css-5cm1aq"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp"
+                        href="/data-usage">Do Not Sell My Personal Information</a></li>
+            </ul>
+            <div class="MuiBox-root css-rmorx9"><select aria-label="language-selector">
+                    <option value="en" selected="">English</option>
+                    <option value="de">Deutsch</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português (Brasil)</option>
+                    <option value="it">Italiano</option>
+                    <option value="nb">Norsk</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ru">Pусский</option>
+                    <option value="sv">Svensk</option>
+                    <option value="da">Dansk</option>
+                    <option value="ko">한국어</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh-CN">中文(简体)</option>
+                    <option value="zh-TW">中文(台灣)</option>
+                </select></div>
+            <div class="MuiBox-root css-3suqjk">
+                <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1y5nj7e">© 2023
+                    MyFitnessPal, Inc.</p>
+            </div>
+        </div>
+    </footer>
+{% endblock profile %}
