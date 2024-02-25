@@ -1,14 +1,7 @@
-import json
-from datetime import datetime
-
-import aiohttp
 from aiohttp import web
-from aiohttp.web_response import json_response
 from aiohttp_jinja2 import template
-from tortoise.transactions import in_transaction
 
 from fitnessapp.utils.myfitnesspal_api import search_food
-from fitnessapp.utils.serializer import Serializer
 from fitnessapp.web.user.models import User, Meal, MealType
 from fitnessapp.web.user.views import BaseView
 
@@ -34,7 +27,8 @@ class UserDiary(BaseView):
             'breakfast_meals': breakfast_meals,
             'lunch_meals': lunch_meals,
             'dinner_meals': dinner_meals,
-            'snacks_meals': snacks_meals
+            'snacks_meals': snacks_meals,
+            'current_url': str(self.request.rel_url)
         }
 
     async def post(self):

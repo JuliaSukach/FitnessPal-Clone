@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block edit_photo %}
+    <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-12upb36">
+        {% include 'toolbar.html' %}
+    </header>
+    <div id="wrap">
+        <div id="content">
+            <div id="main">
+	            <h2 class="main-title">Your Photos</h2>
+                <div class="block-1 edit" id="profile" style="height: 410px;">
+		            <div class="col-1" id="big_image_box" style="float: left;display: flex;flex-direction: column;">
+      	                {% if photo_url %}
+                            <img src="{{ photo_url }}" alt="Uploaded Photo" style="margin-right: 20px;">
+                            <div class="button_holder">
+                                <form action="/photos/edit" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="delete" value="1">
+                                    <button class="btn-submit" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        {% else %}
+                            <p>You have not uploaded a photo yet</p>
+                        {% endif %}
+                    </div>
+		            <div class="col-2" style="float: left; display: block;">
+                        <h3 class="main-title-2">Add A New Photo*</h3>
+                        <div id="flash"></div>
+                        <p>To add a photo to your profile, first choose a photo from your computer, then click "Upload Photo"</p>
+                        <form class="captcha-form" enctype="multipart/form-data" action="/photos/edit" accept-charset="UTF-8" method="post">
+			                <input type="file" name="photo" size="30">
+				            <p>
+                                <div>
+                                    <div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
+                                        <div class="grecaptcha-logo">
+                                            <iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfommMaAAAAAOUYLV_ei4fVOGIG_kW-9a2IyXcH&amp;co=aHR0cHM6Ly93d3cubXlmaXRuZXNzcGFsLmNvbTo0NDM.&amp;hl=en&amp;v=IqA9DpBOUJevxkykws9RiIBs&amp;size=invisible&amp;cb=j55j0brg8j5s" width="256" height="60" role="presentation" name="a-l9xfvmgx1un0" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                        </div>
+                                        <div class="grecaptcha-error"></div>
+                                        <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                    </div>
+                                    <iframe style="display: none;"></iframe>
+                                </div>
+                                <input type="submit" name="commit" value="Upload Photo" data-sitekey="6LfommMaAAAAAOUYLV_ei4fVOGIG_kW-9a2IyXcH" data-callback="_captchaCB" data-disable-with="Upload Photo" class="button g-recaptcha">
+				            </p>
+		                    <p class="mousetype">*Photos depicting adult content, hateful imagery, illegal activities or copyrighted material are not allowed.</p>
+                        </form>
+                    </div>
+                </div>
+                <div class="separator" style="box-sizing: initial;">Click on an image below to select it</div>
+            </div><!-- / #main -->
+            <div id="sidebar"></div><!-- / #sidebar -->
+        </div><!-- / #content -->
+    </div>
+{% endblock edit_photo %}

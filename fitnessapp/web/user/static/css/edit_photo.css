@@ -1,0 +1,62 @@
+/* photos pages */
+/* line 5930, app/assets/stylesheets/sass/style.scss */
+#photos div.col-2 p {
+  padding: 0;
+  margin: 10px 0;
+}
+
+/* line 5931, app/assets/stylesheets/sass/style.scss */
+#photos #profile.edit {
+  height: 330px;
+}
+
+/* line 5932, app/assets/stylesheets/sass/style.scss */
+#photos ul#photo_thumbnails {
+  margin-top: 5px;
+}
+
+/* line 5933, app/assets/stylesheets/sass/style.scss */
+#photos ul#photo_thumbnails li {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+/* line 5934, app/assets/stylesheets/sass/style.scss */
+#photos ul#photo_thumbnails img[alt*="_thumb"] {
+  width: 100px;
+  height: 100px;
+}
+
+/* line 5935, app/assets/stylesheets/sass/style.scss */
+#photos div.button_holder {
+  margin-top: 10px;
+  line-height: 2.3em;
+}
+
+/* line 5936, app/assets/stylesheets/sass/style.scss */
+#photos div.properties {
+  margin-top: 5px;
+  height: 15px;
+}
+
+/* line 5937, app/assets/stylesheets/sass/style.scss */
+#photos div#big_image_box p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 1.5em;
+  padding: 0 30px 10px 0;
+  color: #222;
+}
+
+/* line 5939, app/assets/stylesheets/sass/style.scss */
+div#text_link_ads {
+  text-align: center;
+  margin-top: 5px;
+}
+
+div.button_holder {
+  margin-top: 10px;
+  line-height: 2.3em;
+}

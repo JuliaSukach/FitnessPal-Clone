@@ -36,6 +36,7 @@ class User(models.Model):
     created = fields.DatetimeField(auto_now_add=True)
     status = fields.IntEnumField(UserStatus, default=UserStatus.SIMPLE)
     refresh = fields.TextField(validators=[], null=True)
+    image_name = fields.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.username
