@@ -14,7 +14,7 @@ from .middles import check_data, check_info, auth_token
 from .websocket import websocket_handler
 from ..web.user.view.chat import UserChat
 from ..web.user.view.diary import AddMeal, UserDiary
-from ..web.user.views import UserDetails
+from ..web.user.views import UserDetails, UserGoals
 
 
 def create_app():
@@ -63,6 +63,7 @@ def create_app():
     # Add the route for the Dynamic url
     app.add_routes([web.route('*', '/messages/{recipient_id}',  UserChat)])
     app.add_routes([web.route('*', '/profile/{user_id}',  UserDetails)])
+    app.add_routes([web.route('*', '/account/create/{step_name}', UserGoals)])
     app.add_routes([web.route('DELETE', '/profile/meal',  UserDiary)])
     return app
 

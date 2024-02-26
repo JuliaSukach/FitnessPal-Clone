@@ -3,6 +3,8 @@ import secrets
 import smtplib
 import ssl
 from typing import Optional
+
+import aiohttp_jinja2
 import jwt
 
 import arrow
@@ -341,4 +343,20 @@ class UserDetails(BaseView):
         return web.json_response({'message': 'User deleted successfully'})
 
 
+# class UserGoals(BaseView):
+#     @template('account/welcome.html')
+#     async def get(self):
+#         print('here get method')
+#         return {}
 
+class UserGoals(BaseView):
+    async def get(self):
+        step_name = self.request.match_info['step_name']
+        if step_name == 'welcome':
+            return aiohttp_jinja2.render_template('account/welcome.html', self.request, {})
+        elif step_name == 'input-name':
+            return aiohttp_jinja2.render_template('account/input-name.html', self.request, {})
+        # elif step_name == 'goals':
+        #     return aiohttp_jinja2.render_template('goals.html', self, {})
+        else:
+            return web.Response(text='Invalid step name.')

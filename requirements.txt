@@ -1,5 +1,6 @@
 aiohttp~=3.8.4
-setuptools~=57.0.0
+setuptools~=67.6.1
+
 
 Jinja2~=3.1.2
 cryptography~=39.0.2
