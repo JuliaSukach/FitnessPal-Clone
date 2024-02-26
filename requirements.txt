@@ -1,8 +1,8 @@
 aiohttp~=3.8.4
-setuptools~=57.0.0
+setuptools~=67.6.1
 
 
-controller~=0.4.1
+controller~=0.6.5
 Jinja2~=3.1.2
 cryptography~=39.0.2
 tortoise~=0.1.1

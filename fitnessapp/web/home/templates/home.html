@@ -1,10 +1,299 @@
 {% extends 'base.html' %}
 {% block home %}
-<h1>Hello</h1>
-{{ key }}
-<ul>
-    {% for i in range(3) %}
-    <li>{{ i }}</li>
-    {% endfor %}
-</ul>
+    {% include 'account/header.html' %}
+    <div id="__next">
+        <div class="MuiBox-root css-14r34si">
+            <div class="MuiBox-root css-md2fof" role="main">
+                <div class="MuiBox-root css-1h0pw73">
+                    <div class="MuiGrid-root MuiGrid-container css-1a9bpo2">
+                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-ptinpl">
+                            <h1 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-1jhptox">Good health starts with what you eat.</h1>
+                            <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1v2d2q4">Want to eat more mindfully? Track meals, learn about your habits, and reach your goals with MyFitnessPal.</p>
+                            <div class="MuiBox-root css-153xovg">
+                                <a class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-nmpc2j" tabindex="0" aria-label="Start for free" href="/account/create/welcome">
+                                    <span class="MuiTypography-root MuiTypography-Button/Caps/LG css-13vu486">Start for free</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1n834u0">
+                            <div class="MuiBox-root css-4zx6d">
+                                <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+                                    <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;padding-top:100%"></span>
+                                    <img alt="hero slice" sizes="100vw" src="../../static/img/home_img.webp" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MuiBox-root css-11medba">
+                        <div class="MuiBox-root css-urtpkf">
+                            <h2 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-podwrq">Log from over 14 million foods.</h2>
+                            <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1y5nj7e">See a breakdown of calories and nutrients, compare serving sizes, and discover how the food you eat supports your goals.</p>
+                        </div>
+                        <div class="MuiBox-root css-3chzsm">
+                            <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                    <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27467%27%20height=%27454%27/%3e">
+                                </span>
+                                <img alt="search slice" src="../../static/img/home_img2.webp" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%">
+                                <noscript>
+                                    <img alt="search slice" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcSet="/_next/image?url=%2Fpages%2Fhome%2Fsecondary-hero-slice%402x.png&amp;w=512&amp;q=75 1x, /_next/image?url=%2Fpages%2Fhome%2Fsecondary-hero-slice%402x.png&amp;w=1080&amp;q=75 2x" src="/_next/image?url=%2Fpages%2Fhome%2Fsecondary-hero-slice%402x.png&amp;w=1080&amp;q=75"/>
+                                </noscript>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="MuiBox-root css-19ojif7">
+                        <div class="MuiBox-root css-1g3ai3s" role="complementary" aria-label="core features">
+                            <h2 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-54uwpt">The Tools for Your Goals</h2>
+                            <p class="MuiTypography-root MuiTypography-body1 css-4v7k1t">Trying to lose weight, tone up, lower your BMI, or invest in your overall health? We give you the right features to get there.</p>
+                        </div>
+                        <div class="MuiBox-root css-1hncwoc">
+                            <div class="MuiBox-root css-1qejymn">
+                                <div class="MuiBox-root css-8wcpeb" role="complementary" aria-label="diary">
+                                    <div class="MuiBox-root css-q7hl14" role="complementary" aria-label="diary">
+                                        <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                            <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                                <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2780%27%20height=%2780%27/%3e">
+                                            </span>
+                                            <img alt="diary" src="/_next/static/media/diary.e6e4c438.svg" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcset="/_next/static/media/diary.e6e4c438.svg 1x, /_next/static/media/diary.e6e4c438.svg 2x">
+                                            <noscript>
+                                                <img alt="diary" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcSet="/_next/static/media/diary.e6e4c438.svg 1x, /_next/static/media/diary.e6e4c438.svg 2x" src="/_next/static/media/diary.e6e4c438.svg"/>
+                                            </noscript>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root css-9ipvtb" role="complementary" aria-label="Learn. Track. Improve.">
+                                    <h3 class="MuiTypography-root MuiTypography-Heading/Bold/MD MuiTypography-gutterBottom css-n7fm7l">Learn. Track. Improve.</h3>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-ocmo5t">Keeping a food diary helps you understand your habits and increases your likelihood of hitting your goals.</p>
+                                </div>
+                            </div>
+                            <div class="MuiBox-root css-1qejymn">
+                                <div class="MuiBox-root css-8wcpeb" role="complementary" aria-label="barcode">
+                                    <div class="MuiBox-root css-q7hl14" role="complementary" aria-label="barcode">
+                                        <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                            <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                                <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2780%27%20height=%2780%27/%3e">
+                                            </span>
+                                            <img alt="barcode" src="/_next/static/media/barcode.18277ae4.svg" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcset="/_next/static/media/barcode.18277ae4.svg 1x, /_next/static/media/barcode.18277ae4.svg 2x">
+                                            <noscript>
+                                                <img alt="barcode" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcSet="/_next/static/media/barcode.18277ae4.svg 1x, /_next/static/media/barcode.18277ae4.svg 2x" src="/_next/static/media/barcode.18277ae4.svg"/>
+                                            </noscript>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root css-9ipvtb" role="complementary" aria-label="Logging Simplified">
+                                    <h3 class="MuiTypography-root MuiTypography-Heading/Bold/MD MuiTypography-gutterBottom css-n7fm7l">Logging Simplified.</h3>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-ocmo5t">Scan barcodes, save meals and recipes, and use Quick Tools for fast and easy food tracking.</p>
+                                </div>
+                            </div>
+                            <div class="MuiBox-root css-1qejymn">
+                                <div class="MuiBox-root css-8wcpeb" role="complementary" aria-label="shoe">
+                                    <div class="MuiBox-root css-q7hl14" role="complementary" aria-label="shoe">
+                                        <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                            <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                                <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2780%27%20height=%2780%27/%3e">
+                                            </span>
+                                            <img alt="shoe" src="/_next/static/media/shoeblue.28e2684f.svg" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcset="/_next/static/media/shoeblue.28e2684f.svg 1x, /_next/static/media/shoeblue.28e2684f.svg 2x">
+                                            <noscript>
+                                                <img alt="shoe" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcSet="/_next/static/media/shoeblue.28e2684f.svg 1x, /_next/static/media/shoeblue.28e2684f.svg 2x" src="/_next/static/media/shoeblue.28e2684f.svg"/>
+                                            </noscript>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root css-9ipvtb" role="complementary" aria-label="Stay Motivated">
+                                    <h3 class="MuiTypography-root MuiTypography-Heading/Bold/MD MuiTypography-gutterBottom css-n7fm7l">Stay Motivated.</h3>
+                                    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-ocmo5t">Join the World’s Largest Fitness Community for advice, tips, and support 24/7.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MuiBox-root css-qckpez" role="complementary" aria-label="Victory Stories">
+                        <div class="MuiBox-root css-ogdo4j">
+                            <h2 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-54uwpt">Victory Stories</h2>
+                            <p class="MuiTypography-root MuiTypography-body1 css-ku1xhn">Every day, more than 3,000 members reach their goals with MyFitnessPal. Get inspired for the journey ahead.</p>
+                        </div>
+                        <div class="MuiContainer-root MuiContainer-maxWidthLg css-1tq2e1r">
+                            <div class="MuiContainer-root MuiContainer-maxWidthLg css-1fp67e7">
+                                <div class="MuiBox-root css-5w6ot0">
+                                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-iwgmt8" tabindex="0" type="button">
+                                        <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                            <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                                <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e">
+                                            </span>
+                                            <img alt="left arrow" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%">
+                                            <noscript>
+                                                <img alt="left arrow" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" src="/_next/static/media/arrow-left.fdf599cb.svg"/>
+                                            </noscript>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="MuiBox-root css-up517n">
+                                    <div class="MuiBox-root css-a083v">
+                                        <div class="MuiBox-root css-o38c1g">
+                                            <div class="MuiBox-root css-8y9nfl">
+                                                <div class="MuiBox-root css-rgrfmb">
+                                                    <div class="MuiBox-root css-lhkgci">
+                                                        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                                            <img alt="Stephanie" draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover; object-position: 50% 5%;">
+                                                        </span>
+                                                    </div>
+                                                    <div class="MuiBox-root css-1htkmth">
+                                                        <span class="MuiTypography-root MuiTypography-Heading/Bold/MD css-xksyrz">Education helped her lose 30 pounds.</span>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-16r4nux">MyFitnessPal gave me a wake up call to the way I was eating and made things clear what I needed to change.</p>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-1joj0il">- Stephanie</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root css-1qef00p">
+                                            <div class="MuiBox-root css-8y9nfl">
+                                                <div class="MuiBox-root css-rgrfmb">
+                                                    <div class="MuiBox-root css-lhkgci">
+                                                        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                                            <img alt="Eric" draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover; object-position: 50% 5%;">
+                                                        </span>
+                                                    </div>
+                                                    <div class="MuiBox-root css-1htkmth">
+                                                        <span class="MuiTypography-root MuiTypography-Heading/Bold/MD css-xksyrz">From fast-food addict to mindful eater.</span>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-16r4nux">I naturally fell into the concept of mindful eating… it takes 15-20 minutes for the food to hit your stomach, so I started eating slower.</p>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-1joj0il">- Eric</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root css-1ek1b9b">
+                                            <div class="MuiBox-root css-8y9nfl">
+                                                <div class="MuiBox-root css-rgrfmb">
+                                                    <div class="MuiBox-root css-lhkgci">
+                                                        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                                            <img alt="Lori" draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover; object-position: 50% 5%;">
+                                                            <noscript></noscript>
+                                                        </span>
+                                                    </div>
+                                                    <div class="MuiBox-root css-1htkmth">
+                                                        <span class="MuiTypography-root MuiTypography-Heading/Bold/MD css-xksyrz">She was eager to make a change.</span>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-16r4nux">Now, when I have friends starting to run and getting frustrated, I tell them to just stick with it, eventually, you’ll get faster.</p>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-1joj0il">- Lori</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root css-1o8iv4i">
+                                            <div class="MuiBox-root css-8y9nfl">
+                                                <div class="MuiBox-root css-rgrfmb">
+                                                    <div class="MuiBox-root css-lhkgci">
+                                                        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                                            <img alt="Stephanie" draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover; object-position: 50% 5%;">
+                                                            <noscript></noscript>
+                                                        </span>
+                                                    </div>
+                                                    <div class="MuiBox-root css-1htkmth">
+                                                        <span class="MuiTypography-root MuiTypography-Heading/Bold/MD css-xksyrz">Education helped her lose 30 pounds.</span>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-16r4nux">MyFitnessPal gave me a wake up call to the way I was eating and made things clear what I needed to change.</p>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-1joj0il">- Stephanie</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="MuiBox-root css-16w0uix">
+                                            <div class="MuiBox-root css-8y9nfl">
+                                                <div class="MuiBox-root css-rgrfmb">
+                                                    <div class="MuiBox-root css-lhkgci">
+                                                        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                                                            <img alt="Eric" draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover; object-position: 50% 5%;">
+                                                            <noscript></noscript>
+                                                        </span>
+                                                    </div>
+                                                    <div class="MuiBox-root css-1htkmth">
+                                                        <span class="MuiTypography-root MuiTypography-Heading/Bold/MD css-xksyrz">From fast-food addict to mindful eater.</span>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-16r4nux">I naturally fell into the concept of mindful eating… it takes 15-20 minutes for the food to hit your stomach, so I started eating slower.</p>
+                                                        <p class="MuiTypography-root MuiTypography-body1 css-1joj0il">- Eric</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root css-5w6ot0">
+                                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-iwgmt8" tabindex="0" type="button">
+                                        <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+                                            <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                                                <img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2730%27%20height=%2730%27/%3e">
+                                            </span>
+                                            <img alt="right arrow" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%">
+                                            <noscript>
+                                                <img alt="right arrow" loading="lazy" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" src="/_next/static/media/arrow-right.7d54eed8.svg"/>
+                                            </noscript>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="MuiBox-root css-1ymfup1">
+                                <div class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiMobileStepper-root MuiMobileStepper-positionStatic css-1reez03">
+                                    <div class="MuiMobileStepper-dots css-1xhj18k">
+                                        <div class="MuiMobileStepper-dot css-454acy"></div>
+                                        <div class="MuiMobileStepper-dot MuiMobileStepper-dotActive css-an4ztl"></div>
+                                        <div class="MuiMobileStepper-dot css-454acy"></div>
+                                    </div>
+                                </div>
+                                <div class="MuiBox-root css-w1p8lh">
+                                    <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1dnfzob" tabindex="0" type="button" aria-label="progress bar 1"></button>
+                                    <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1dnfzob" tabindex="0" type="button" aria-label="progress bar 2"></button>
+                                    <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1dnfzob" tabindex="0" type="button" aria-label="progress bar 3"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MuiBox-root css-c9fwyz">
+                            <a class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-1y1dmty" tabindex="0" href="/account/create/welcome">
+                                <span class="MuiTypography-root MuiTypography-Button/Caps/LG css-13vu486">START YOUR JOURNEY TODAY</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="MuiBox-root css-1ad5ko5">
+                        <div class="MuiBox-root css-b4nb9" role="complementary" aria-label="Recipes &amp; Inspiration">
+                            <h2 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-podwrq">Recipes &amp; Inspiration</h2>
+                            <p class="MuiTypography-root MuiTypography-body1 css-ecsye2">Get nutritionist-approved recipes and motivational workout tips from MyFitnessPal experts.</p>
+                        </div>
+                        <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-7 css-1obzjka">
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-1yiu2cv">
+                                <div class="MuiBox-root css-1tig4qi" role="navigation" aria-label="15 Make-Ahead Breakfasts Under 300 Calories">
+                                    <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1e0rljy" data-ue-action="click" data-ue-category="home_page" data-ue-event="home_blog_click" href="https://blog.myfitnesspal.com/10-make-ahead-breakfasts-under-300-calories?utm_source=mfp&amp;utm_medium=app_homepage">
+                                        <div class="MuiBox-root css-gc0skc">
+                                            <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
+                                                <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 56.25% 0px 0px;"></span>
+                                                <img alt="a bowl of oatmeal with cranberries" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="responsive" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                                                <noscript></noscript>
+                                            </span>
+                                        </div>
+                                        <div class="MuiBox-root css-1jyort">
+                                            <h3 class="MuiTypography-root MuiTypography-body1 css-17gywrn">15 Make-Ahead Breakfasts Under 300 Calories</h3>
+                                            <p class="MuiTypography-root MuiTypography-Heading/Semibold/XS css-yl7huy">MyFitnessPal Blog</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-1yiu2cv">
+                                <div class="MuiBox-root css-1tig4qi" role="navigation" aria-label="The Problem With Cheat Days">
+                                    <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1e0rljy" data-ue-action="click" data-ue-category="home_page" data-ue-event="home_blog_click" href="https://blog.myfitnesspal.com/the-problem-with-cheat-days?utm_source=mfp&amp;utm_medium=app_homepage">
+                                        <div class="MuiBox-root css-gc0skc">
+                                            <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+                                                <span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;padding-top:56.25%"></span>
+                                                <img alt="An arrangement of different cheat meals" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%">
+                                                <noscript>
+                                                    <img alt="An arrangement of different cheat meals" loading="lazy" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" sizes="100vw" srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=320&amp;q=75 320w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=375&amp;q=75 375w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=425&amp;q=75 425w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=512&amp;q=75 512w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=3840&amp;q=75 3840w" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&amp;w=3840&amp;q=75"/>
+                                                </noscript>
+                                            </span>
+                                        </div>
+                                        <div class="MuiBox-root css-1jyort">
+                                            <h3 class="MuiTypography-root MuiTypography-body1 css-17gywrn">The Problem With Cheat Days</h3>
+                                            <p class="MuiTypography-root MuiTypography-Heading/Semibold/XS css-yl7huy">MyFitnessPal Blog</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-1yiu2cv">
+                                <div class="MuiBox-root css-1tig4qi" role="navigation" aria-label="Essential Guide to Getting Moving">
+                                    <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1e0rljy" data-ue-action="click" data-ue-category="home_page" data-ue-event="home_blog_click" href="https://blog.myfitnesspal.com/essential-guide-to-movement-activity?utm_source=mfp&amp;utm_medium=app_homepage"><div class="MuiBox-root css-gc0skc"><span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative"><span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;padding-top:56.25%"></span><img alt="a woman pictured jogging in a city" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"><noscript><img alt="a woman pictured jogging in a city" loading="lazy" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" sizes="100vw" srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=320&amp;q=75 320w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=375&amp;q=75 375w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=425&amp;q=75 425w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=512&amp;q=75 512w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=3840&amp;q=75 3840w" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&amp;w=3840&amp;q=75"/></noscript></span></div><div class="MuiBox-root css-1jyort"><h3 class="MuiTypography-root MuiTypography-body1 css-17gywrn">Essential Guide to Getting Moving</h3><p class="MuiTypography-root MuiTypography-Heading/Semibold/XS css-yl7huy">MyFitnessPal Blog</p></div></a></div></div></div></div><div class="MuiBox-root css-pvtqr"><div class="MuiBox-root css-1w76ddh" role="complementary" aria-label="Connect with over 50 apps."><h2 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-ja67y6">Connect with over 50 apps.</h2><p class="MuiTypography-root MuiTypography-body1 css-49tglg">Easily link your MyFitnessPal account with apps that support your healthier lifestyle. It’s not just about calories. It’s about feeling better, looking better, and living better.</p><div class="MuiBox-root css-19uehwf"><span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative"><span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;padding-top:60.9375%"></span><img alt="Connect with over 50 apps." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:contain"><noscript><img alt="Connect with over 50 apps." loading="lazy" decoding="async" data-nimg="responsive" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:contain" sizes="100vw" srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=320&amp;q=75 320w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=375&amp;q=75 375w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=425&amp;q=75 425w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=512&amp;q=75 512w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=3840&amp;q=75 3840w" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-apps%402x.85e549ef.png&amp;w=3840&amp;q=75"/></noscript></span></div></div></div><div class="MuiBox-root css-1uu0w8n"><p class="MuiTypography-root MuiTypography-Body/Regular/XS css-4n8l4k">MyFitnessPal is one of the best weight loss apps and fitness apps, helping nearly 1 million members reach their nutrition and fitness goals every year. Members use it as a calories tracker and calorie counter to log their foods, and take advantage of the app’s food database that contains over 14 million foods. It’s not just a free calorie counter app — it’s also the best calorie counter app for people who are looking to take back control of their health and fitness.</p></div></div></div><footer class="MuiBox-root css-g0t3np"><div class="MuiBox-root css-pskig2"><nav class="MuiGrid-root MuiGrid-container css-enlun6"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="/en/welcome/learn_more"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">About</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="/nutrition-facts-calories"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Food</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="/en/exercise/lookup"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Exercise</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="/apps"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Apps</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="https://community.myfitnesspal.com/en/categories"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Community</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="https://blog.myfitnesspal.com"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Blog</span></a><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-2lxm76" href="/premium?source=menu_bar"><span class="MuiTypography-root MuiTypography-Button/Caps/MD css-ytcg0t">Premium</span></a></nav><ul class="MuiBox-root css-8uqg1u"><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/">Calorie Counter</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="https://blog.myfitnesspal.com">Blog</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/terms-of-service">Terms</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/privacy-policy">Privacy</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/contact-us">Contact Us</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/api">API</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/jobs">Jobs</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="https://community.myfitnesspal.com/en/categories/feature-suggestions-and-ideas">Feedback</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/community-guidelines">Community Guidelines</a></li><li class="MuiBox-root css-5cm1aq"><button class="MuiButtonBase-root css-1b47e06" tabindex="0" type="button" variant="text"><p class="MuiTypography-root MuiTypography-body1 css-18pisve">Cookie Preferences</p></button></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" target="_blank" href="/privacy-policy#interest-based-advertising">Ad Choices</a></li><li class="MuiBox-root css-5cm1aq"><a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1k8z5lp" href="/data-usage">Do Not Sell My Personal Information</a></li></ul><div class="MuiBox-root css-1qx89sr"><select aria-label="language-selector"><option value="en" selected="">English</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option><option value="pt">Português (Brasil)</option><option value="it">Italiano</option><option value="nb">Norsk</option><option value="nl">Nederlands</option><option value="ru">Pусский</option><option value="sv">Svensk</option><option value="da">Dansk</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="zh-CN">中文(简体)</option><option value="zh-TW">中文(台灣)</option></select></div><div class="MuiBox-root css-3suqjk"><p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-1y5nj7e">© 2023 MyFitnessPal, Inc.</p></div>
+        </div>
+            </footer>
+        </div>
+    </div>
 {% endblock home %}

@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block welcome %}
+    {% include 'account/header.html' %}
+    <section class="MuiBox-root css-1x9b48e">
+        <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+            <img alt="background" sizes="100vw" src="../../static/img/bg.webp" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
+        </span>
+        <div class="MuiContainer-root MuiContainer-maxWidthSm css-qpa126">
+            <main class="MuiBox-root css-u6fmbq">
+                <div class="MuiBox-root css-10boky2">
+                    <div class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column css-dw3q30">
+                        <div class="MuiGrid-root MuiGrid-item css-wxmf64">
+                            <h1 class="MuiTypography-root MuiTypography-h3 MuiTypography-alignCenter css-yecavw">Welcome! Let’s customize MyFitnessPal for your goals.</h1>
+                        </div>
+                        <div class="MuiGrid-root MuiGrid-item css-1wxaqej">
+                            <a href="/account/create/input-name" class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-xgbwee" tabindex="0" type="button">
+                                <span class="MuiTypography-root MuiTypography-button1 css-b9fb38">Continue</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+{% endblock welcome %}

@@ -6,6 +6,7 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from cryptography.hazmat.primitives.asymmetric.types import PRIVATE_KEY_TYPES, PUBLIC_KEY_TYPES
+from dotenv import load_dotenv
 
 
 class Enigma:
@@ -23,6 +24,7 @@ class Enigma:
 
     @classmethod
     def load_key(cls, path):
+        load_dotenv()
         with open(path, mode='rb') as _key_file:
             cls.private_key = serialization.load_pem_private_key(
                 _key_file.read(), password=os.environ['KEY_PASS'].encode('utf-8')
