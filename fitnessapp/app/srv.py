@@ -7,7 +7,6 @@ from aiohttp_session import setup as session_setup
 from aiohttp_session.cookie_storage import EncryptedCookieStorage
 from aiohttp_jinja2 import setup as jinja_setup
 from tortoise.contrib.aiohttp import register_tortoise
-from controller import controller_setup
 from fitnessapp.utils.crypto import Enigma
 from fitnessapp import settings
 from .middles import check_data, check_info, auth_token
@@ -58,7 +57,6 @@ def create_app():
     )
     Enigma.load_key(settings.PRIVATE_KEY_PATH)
 
-    # controller_setup(app, root_urls='fitnessapp.web.root.urls')  # entry point
     root_setup_routes(app)
     register_tortoise(app, config=settings.DB_CONFIG, generate_schemas=True)
 
