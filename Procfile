@@ -1,1 +1,1 @@
-web: gunicorn fitnessapp.app.srv:app
+web: python -m fitnessapp.app.__main__
