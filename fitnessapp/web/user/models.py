@@ -1,7 +1,6 @@
 import os
 import asyncio
 from tortoise import models, fields
-from tortoise.contrib.pydantic import PydanticModel
 from tortoise.signals import pre_save
 from enum import IntEnum
 from hashlib import sha3_224
