@@ -17,5 +17,7 @@ ez_setup~=0.9
 gunicorn~=20.1.0
 aiohttp-session~=2.12.0
 aiohttp_jinja2~=1.5.1
+tortoise-orm~=0.19.3
+
 
 
