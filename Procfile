@@ -1,1 +1,1 @@
-web: gunicorn fitnessapp.srv:app
+web: gunicorn gettingstarted.wsgi
