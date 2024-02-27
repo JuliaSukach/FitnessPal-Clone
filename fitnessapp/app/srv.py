@@ -16,6 +16,7 @@ from ..web.user.view.chat import UserChat
 from ..web.user.view.diary import AddMeal, UserDiary
 from ..web.user.views import UserDetails, UserGoals
 
+from fitnessapp.web.root.urls import setup_routes as root_setup_routes
 
 def create_app():
     app = web.Application(middlewares=(check_data, check_info, auth_token))  # create application
@@ -57,14 +58,15 @@ def create_app():
     )
     Enigma.load_key(settings.PRIVATE_KEY_PATH)
 
-    controller_setup(app, root_urls='fitnessapp.web.root.urls')  # entry point
+    # controller_setup(app, root_urls='fitnessapp.web.root.urls')  # entry point
+    root_setup_routes(app)
     register_tortoise(app, config=settings.DB_CONFIG, generate_schemas=True)
 
     # Add the route for the Dynamic url
-    app.add_routes([web.route('*', '/messages/{recipient_id}',  UserChat)])
-    app.add_routes([web.route('*', '/profile/{user_id}',  UserDetails)])
+    app.add_routes([web.route('*', '/messages/{recipient_id}', UserChat)])
+    app.add_routes([web.route('*', '/profile/{user_id}', UserDetails)])
     app.add_routes([web.route('*', '/account/create/{step_name}', UserGoals)])
-    app.add_routes([web.route('DELETE', '/profile/meal',  UserDiary)])
+    app.add_routes([web.route('DELETE', '/profile/meal', UserDiary)])
     return app
 
 
