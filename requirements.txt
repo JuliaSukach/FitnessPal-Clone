@@ -14,3 +14,5 @@ arrow~=1.2.3
 bs4~=0.0.1
 beautifulsoup4~=4.12.2
 ez_setup~=0.9
+gunicorn~=20.1.0
+
