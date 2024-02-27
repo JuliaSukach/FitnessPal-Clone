@@ -16,4 +16,6 @@ beautifulsoup4~=4.12.2
 ez_setup~=0.9
 gunicorn~=20.1.0
 aiohttp-session~=2.12.0
+aiohttp_jinja2~=1.5.1
+
 
