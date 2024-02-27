@@ -1,1 +1,1 @@
-web: gunicorn fitnessapp:app
+web: gunicorn fitnessapp.wsgi:application
