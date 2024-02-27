@@ -1,1 +1,1 @@
-web: python -m fitnessapp.app.srv
+web: python -m fitnessapp.app
