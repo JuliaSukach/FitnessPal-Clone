@@ -27,7 +27,7 @@ class Enigma:
         load_dotenv()
         with open(path, mode='rb') as _key_file:
             cls.private_key = serialization.load_pem_private_key(
-                _key_file.read(), password=str(os.getenv('KEY_PASS')).encode('utf-8')
+                _key_file.read(), password='17101997'.encode('utf-8')
             )
             cls.public_key = cls.private_key.public_key()
 
