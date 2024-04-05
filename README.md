@@ -18,7 +18,7 @@ Welcome to the FitnessPal Clone repository! This project is a Python-powered rec
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/fitnesspal-clone.git
+https://github.com/JuliaSukach/FitnessPal-Clone.git
 ```
 
 2. Install dependencies:
